@@ -1,0 +1,9 @@
+Welcome to the SSI / Bol.com integration repository!
+
+This repository consists of two main folders: WAMAS and Reflex. Each folder will contain interface specifications.
+The WAMAS folder will contain the specs of the interfaces for which the endpoint resides in WAMAS. and for the interfaces inside
+reflex, these are to be put inside the Reflex main folder.
+
+Rules for using this repository:
+1. Create a separate folder for each interface. Use the interface name as the folder name
+2. Each folder should at least contain an XSD and an example XML
