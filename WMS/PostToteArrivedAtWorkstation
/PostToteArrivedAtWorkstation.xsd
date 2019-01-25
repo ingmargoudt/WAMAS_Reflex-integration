@@ -6,17 +6,17 @@
 		</xs:annotation></xs:element>
 	<xs:complexType name="PostToteArrivedAtWorkstation">
 		<xs:all>
-			<xs:element name="Workstation" type="rfx:Workstation" nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Barcode" type="rfx:Barcode" nillable="false" minOccurs="0" maxOccurs="1"/>		
+			<xs:element name="WorkstationId" type="rfx:WorkstationId" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ToteBarcode" type="rfx:ToteBarcode" nillable="false" minOccurs="0" maxOccurs="1"/>		
 		</xs:all>
 	</xs:complexType>
 
-	<xs:simpleType name="Workstation">
+	<xs:simpleType name="WorkstationId">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="15"></xs:maxLength>
 		</xs:restriction>		
 	</xs:simpleType>
-	<xs:simpleType name="Barcode">
+	<xs:simpleType name="ToteBarcode">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="18"></xs:maxLength>
 		</xs:restriction>		
