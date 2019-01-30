@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><PostToteArrivedAtWorkstation xmlns="http://www.hardis-group.com/schemas/PostToteArrivedAtWorkstation.xsd">
-<Workstation>EXC001</Workstation>
-<Barcode>3183288123973</Barcode>
+<WorkstationId>EXC001</WorkstationId>
+<ToteBarcode>3183288123973</ToteBarcode>
 </PostToteArrivedAtWorkstation>

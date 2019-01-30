@@ -40,16 +40,16 @@ If there is already a tote assigned to this slot, WAMAS moves this tote to a vir
 	</xs:simpleType>
 	<xs:simpleType name="ToteOrientation">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="Bottom"></xs:enumeration>
-			<xs:enumeration value="Top"></xs:enumeration>
+			<xs:enumeration value="1"></xs:enumeration>
+			<xs:enumeration value="2"></xs:enumeration>
 		</xs:restriction>
 		
 	</xs:simpleType>
 	<xs:simpleType name="CompartmentType">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="Full"></xs:enumeration>
-			<xs:enumeration value="Half"></xs:enumeration>
-			<xs:enumeration value="Quarter"></xs:enumeration>
+			<xs:enumeration value="STF"></xs:enumeration>
+			<xs:enumeration value="STH"></xs:enumeration>
+			<xs:enumeration value="STQ"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 
