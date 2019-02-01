@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><GetToteCompartmentAdviceRequest xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+<?xml version="1.0" encoding="UTF-8"?><PostToteOnWorkstationSlotRequest xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
 	<WorkstationId>EXC001</WorkstationId>
-	<EanBarcode>1112223330123</EanBarcode>
-	<BestBeforeDate>2019-01-30T09:00:45</BestBeforeDate>
-	<ReceiptId>19000123341</ReceiptId>
-	<RemainingQtyToReceiveThisDay>456</RemainingQtyToReceiveThisDay>
-	<RemainingQtyToReceiveThisPallet>34</RemainingQtyToReceiveThisPallet>
-</GetToteCompartmentAdviceRequest>
+	<WorkstationSlot>9</WorkstationSlot>
+	<ToteBarcode>3183288123973</ToteBarcode>
+	<ToteOrientation>1</ToteOrientation>
+	<CompartmentType>STH</CompartmentType>
+</PostToteOnWorkstationSlotRequest>
