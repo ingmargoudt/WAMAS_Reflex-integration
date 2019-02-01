@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><PostToteOnWorkstationSlot xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<WorkstationId>EXC001</WorkstationId>
+	<WorkstationSlot>9</WorkstationSlot>
+	<ToteBarcode>3183288123973</ToteBarcode>
+	<ToteOrientation>1</ToteOrientation>
+	<CompartmentType>STH</CompartmentType>
+</PostToteOnWorkstationSlot>
