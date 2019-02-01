@@ -4,12 +4,4 @@
 	<ToteBarcode>3183288123973</ToteBarcode>
 	<ToteOrientation>1</ToteOrientation>
 	<CompartmentType>STH</CompartmentType>
-	<Errors>
-		<ErrorId>WCS00001</ErrorId>
-		<ErrorDescription>Slot not valid</ErrorDescription>
-	</Errors>	
-	<Errors>
-		<ErrorId>WCS00002</ErrorId>
-		<ErrorDescription>Invalid orientation</ErrorDescription>
-	</Errors>	
 </PostToteOnWorkstationSlot>
