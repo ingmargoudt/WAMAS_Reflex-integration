@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><PostToteOnWorkstationSlotResponse xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<Errors>
+	<ErrorId>WCS00001</ErrorId>
+	<ErrorDescription>Incorrect compartment type</ErrorDescription>
+	</Errors>
+</PostToteOnWorkstationSlotResponse>

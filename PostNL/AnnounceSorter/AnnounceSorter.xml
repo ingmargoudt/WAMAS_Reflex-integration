@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnnounceSorter>
+	<BarCode/><!-- T&T code (missing on DEV) -->
+	<Customers>
+		<Customer>
+			<CustomerNumber>10472561</CustomerNumber>
+			<CustomerCode>TUNB</CustomerCode>
+		</Customer>
+	</Customers>
+	<Shipment>
+	    <NextProcessID>AA.001</NextProcessID>
+		<ProductCodeDelivery>3085</ProductCodeDelivery>
+		<ProductOptions><!-- Optionnal -->
+			<ProductOption>
+				<Option>3085</Option>
+				<Characteristic>3085</Characteristic>
+			</ProductOption>
+		</ProductOptions><!-- EndOptionnal -->
+		<CustomerOrderNumber>1006198707</CustomerOrderNumber>
+		<Contacts>
+			<Contact>
+				<ContactType>01</ContactType>
+				<TelNr/>
+				<Email>Test123</Email>
+				<SMSNr>0797877774</SMSNr>
+			</Contact>
+		</Contacts>
+		<Addresses>
+			<Address>
+				<AddressType>01</AddressType>
+				<Street>Keulsekade</Street>
+				<HouseNr>10</HouseNr>
+				<Zipcode>3531 JW</Zipcode>
+				<City>UTRECHT</City>
+				<Countrycode>528</Countrycode>
+				<Region/>
+			</Address>
+			<Address>
+				<AddressType>02</AddressType>
+				<Street>te bepalen</Street>
+				<HouseNr> </HouseNr>
+				<Zipcode>5145 RH</Zipcode>
+				<City>Waalwijk</City>
+				<Countrycode>Nederland</Countrycode>
+			</Address>
+		</Addresses>
+	</Shipment>
+	<InsuredAmount>1500</InsuredAmount>
+</AnnounceSorter>

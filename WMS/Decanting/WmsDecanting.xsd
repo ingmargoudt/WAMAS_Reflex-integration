@@ -3,18 +3,20 @@
 	
 	<xs:complexType name="Errors">
 		<xs:all>
-			<xs:element name="ErrorId" type="wms:ErrorId" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ErrorId"          type="wms:ErrorId"          nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ErrorDescription" type="wms:ErrorDescription" nillable="false" minOccurs="1" maxOccurs="1"/>		
 		</xs:all>
 	</xs:complexType>
 
-	<xs:complexType name="PostToteArrivedAtWorkstation">
+	<xs:element  name="PostToteArrivedAtWorkstation">
+	<xs:complexType>
 		<xs:all>
 			<xs:element name="WorkstationId" type="wms:WorkstationId" nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ToteBarcode" type="wms:ToteBarcode" nillable="false" minOccurs="0" maxOccurs="1"/>		
+			<xs:element name="ToteBarcode"   type="wms:ToteBarcode"   nillable="false" minOccurs="0" maxOccurs="1"/>		
 		</xs:all>
 	</xs:complexType>
-
+	</xs:element>
+	
 	<xs:simpleType name="ErrorId">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="10"></xs:maxLength>

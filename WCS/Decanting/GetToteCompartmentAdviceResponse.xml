@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><GetToteCompartmentAdviceResponse xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+<ResponseId>RC1</ResponseId>       
+<ResponseDescription>Tote Compartment suggestion</ResponseDescription>
+<WorkstationSlot>1</WorkstationSlot>    
+<ToteBarcode>776122332435</ToteBarcode>        
+<ToteOrientation>2</ToteOrientation>    
+<CompartmentType>STH</CompartmentType>  
+<CompartmentNumber>2</CompartmentNumber>
+</GetToteCompartmentAdviceResponse>
