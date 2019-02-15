@@ -2,13 +2,13 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsDecanting.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsDecanting.xsd" elementFormDefault="qualified" version="1.0">	
 	<xs:element name="PostToteOnWorkstationSlotRequest">
 		<xs:complexType>
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="WorkstationId"   type="wcs:WorkstationId"   nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="WorkstationSlot" type="wcs:WorkstationSlot" nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="ToteOrientation" type="wcs:ToteOrientation" nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="CompartmentType" type="wcs:CompartmentType" nillable="false" minOccurs="1" maxOccurs="1"/>	
-		</xs:sequence>
+		</xs:all>
 		</xs:complexType>
 	</xs:element>
 		
@@ -22,14 +22,14 @@
 	
 	<xs:element name="GetToteCompartmentAdviceRequest">
 		<xs:complexType>
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="WorkstationId"                   type="wcs:WorkstationId"                   nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="EanBarcode"                      type="wcs:EanBarcode"                      nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="BestBeforeDate"                  type="wcs:BestBeforeDate"                  nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="ReceiptId"                       type="wcs:ReceiptId"                       nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="RemainingQtyToReceiveThisDay"    type="wcs:RemainingQtyToReceiveThisDay"    nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="RemainingQtyToReceiveThisPallet" type="wcs:RemainingQtyToReceiveThisPallet" nillable="false" minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
+		</xs:all>
 		</xs:complexType>
 	</xs:element>
 	
@@ -50,31 +50,111 @@
 	
 	<xs:element name="PutToteStockRequest">
 		<xs:complexType>
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="WorkstationId"      type="wcs:WorkstationId"      nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="WorkstationSlot"    type="wcs:WorkstationSlot"    nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="ToteBarcode"        type="wcs:ToteBarcode"        nillable="false" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="ToteBarcode"        type="wcs:ToteBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="CompartmentNumber"  type="wcs:CompartmentNumber"  nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="EanBarcode"         type="wcs:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="BestBeforeDate"     type="wcs:BestBeforeDate"     nillable="false" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="NewItemProcessFlag" type="wcs:NewItemProcessFlag" nillable="false" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="NewItemProcessFlag" type="xs:boolean"             nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="QuantityToPut"      type="wcs:QuantityToPut"      nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:sequence>
+		</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="PutToteStockResponse">
 		<xs:complexType>
-		<xs:sequence>
-			<xs:element name="WorkstationId"   type="wcs:WorkstationId"   nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="WorkstationSlot" type="wcs:WorkstationSlot" nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="ToteOrientation" type="wcs:ToteOrientation" nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="CompartmentType" type="wcs:CompartmentType" nillable="false" minOccurs="1" maxOccurs="1"/>	
-		</xs:sequence>
+		<xs:all>
+			<xs:element name="ResponseId"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ResponseDescription" type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="DeleteToteStock">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="WorkstationId"      type="wcs:WorkstationId"      nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ToteBarcode"        type="wcs:ToteBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="CompartmentNumber"  type="wcs:CompartmentNumber"  nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EanBarcode"         type="wcs:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="QuantityToDelete"   type="wcs:QuantityToPut"      nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="PutToteReservationRequest">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="WorkstationId"      type="wcs:WorkstationId"      nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="WorkstationSlot"    type="wcs:WorkstationSlot"    nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ToteDestination"    type="wcs:ToteDestination"    nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="ToteType"           type="wcs:ToteType"           nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="PutToteReservationResponse">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="ResponseId"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ResponseDescription" type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="WorkstationSlot"     type="wcs:WorkstationSlot"     nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ToteBarcode"         type="wcs:ToteBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="CompartmentType"     type="wcs:CompartmentType"     nillable="false" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="ToteDestination"     type="wcs:ToteDestination"     nillable="false" minOccurs="0" maxOccurs="1"/>	
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PutLargeToteReleaseRequest">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="WorkstationId"      type="wcs:WorkstationId"      nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="WorkstationSlot"    type="wcs:WorkstationSlot"    nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PutLargeToteReleaseResponse">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="ResponseId"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ResponseDescription" type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PostToteCompartmentTypeChange">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="WorkstationId"   type="wcs:WorkstationId"   nillable="false" minOccurs="1" maxOccurs="1"/>		
+			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CompartmentType" type="wcs:CompartmentType" nillable="false" minOccurs="1" maxOccurs="1"/>				
+			<xs:element name="ToteOrientation" type="wcs:ToteOrientation" nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PutToteCompartmentFullRequest">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="WorkstationId"     type="wcs:WorkstationId"     nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ToteBarcode"       type="wcs:ToteBarcode"       nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="CompartmentNumber" type="wcs:CompartmentNumber" nillable="false" minOccurs="1" maxOccurs="1"/>			
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PutToteCompartmentFullResponse">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="ResponseId"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ResponseDescription" type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:complexType name = "Errors">
 		<xs:all>
 			<xs:element name="ErrorId"          type="wcs:ErrorId"          nillable="false" minOccurs="1" maxOccurs="1"/>
@@ -176,4 +256,20 @@
 			<xs:maxInclusive value="999999999"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="ToteDestination">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Exception"></xs:enumeration>
+			<xs:enumeration value="BFC1"></xs:enumeration>
+			<xs:enumeration value="ADR"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ToteType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Large"></xs:enumeration>
+			<xs:enumeration value="Small"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	
 </xs:schema>
