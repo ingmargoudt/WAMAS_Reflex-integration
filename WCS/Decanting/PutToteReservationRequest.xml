@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PutToteReservationRequest xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<WorkstationId>EXC001</WorkstationId>      
+	<WorkstationSlot>3</WorkstationSlot>
+	<ToteDestination>Exception</ToteDestination>
+	<ToteType>Large</ToteType>
+</PutToteReservationRequest>

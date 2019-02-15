@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PutToteReservationResponse xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<ResponseId>RC1</ResponseId>
+	<ResponseDescription>Tote Reserved</ResponseDescription>
+	<ToteBarcode>7781234343</ToteBarcode>
+	<WorkstationSlot>5</WorkstationSlot>
+	<CompartmentType>STF</CompartmentType>
+</PutToteReservationResponse>
