@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PutToteStockRequest xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<WorkstationId>EXC001</WorkstationId>      
+	<ToteBarcode>77812443</ToteBarcode>        
+	<CompartmentNumber>4</CompartmentNumber> 
+	<EanBarcode>001233232444311</EanBarcode>         
+	<BestBeforeDate>2019-12-30</BestBeforeDate>    
+	<NewItemProcessFlag>true</NewItemProcessFlag>
+	<QuantityToPut>3</QuantityToPut>     
+</PutToteStockRequest>

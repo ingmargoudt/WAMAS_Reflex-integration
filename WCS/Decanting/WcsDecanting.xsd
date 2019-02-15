@@ -225,7 +225,7 @@
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="BestBeforeDate">
-		<xs:restriction base="xs:dateTime">
+		<xs:restriction base="xs:date">
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="ReceiptId">
