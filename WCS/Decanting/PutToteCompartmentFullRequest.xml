@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PutToteCompartmentFullRequest xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<WorkstationId>ADR004</WorkstationId>
+	<ToteBarcode>77843435343</ToteBarcode>
+	<CompartmentNumber>1</CompartmentNumber>
+</PutToteCompartmentFullRequest>
