@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostToteAnnouncement xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+	<WorkstationId>R200</WorkstationId>
+	<ToteBarcode>77812443</ToteBarcode>        
+  <ToteOrientation>1</ToteOrientation>
+  <CompartmentType>STH</CompartmentType>
+  <ToteDestination>Shuttle</ToteDestination>	
+  <StockItems>
+    <StockItem>
+	    <CompartmentNumber>1</CompartmentNumber> 
+	    <EanBarcode>001233232444311</EanBarcode>         
+	    <BestBeforeDate>2019-12-30</BestBeforeDate>
+      <ReceiptId>19000123341</ReceiptId>
+	    <QuantityToPost>2</QuantityToPost>
+    </StockItem>
+    <StockItem>
+	    <CompartmentNumber>2</CompartmentNumber> 
+	    <EanBarcode>001233232444322</EanBarcode>         
+	    <ReceiptId>19000123341</ReceiptId>      
+	    <QuantityToPost>2</QuantityToPost>
+    </StockItem>
+  </StockItems>
+</PostToteAnnouncement>
