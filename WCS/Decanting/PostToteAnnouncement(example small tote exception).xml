@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PutToteAnnouncement xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+<PostToteAnnouncement xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
 	<WorkstationId>R200</WorkstationId>
   <WorkstationSlot>3</WorkstationSlot>	
 	<ToteBarcode>77812443</ToteBarcode>        
   <ToteOrientation>1</ToteOrientation>
   <CompartmentType>STH</CompartmentType>
   <ToteDestination>Exception</ToteDestination>	
-</PutToteAnnouncement>
+</PostToteAnnouncement>
