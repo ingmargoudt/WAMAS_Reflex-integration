@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UpdateStock xmlns="http://www.hardis-group.com/schemas/StockManagement.xsd">
+	<ToteBarcode>77812443</ToteBarcode>        
+	<Reason >Stocked in Shuttle</Reason > 
+	<StockItems>
+		<StockItem>
+			<EanBarcode>001233232444311</EanBarcode>         
+			<BestBeforeDate>2019-12-30</BestBeforeDate>    
+			<Quantity>3</Quantity>     
+			<StockStatus >Available</StockStatus >     
+    </StockItem>
+    <StockItem>
+			<EanBarcode>001233232444315</EanBarcode>         
+			<Quantity>1</Quantity>     
+			<StockStatus >Available</StockStatus >     
+    </StockItem>
+	</StockItems>
+</UpdateStock>
