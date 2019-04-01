@@ -1,0 +1,21 @@
+-- Draft version To be discussed --
+<?xml version="1.0" encoding="UTF-8"?>
+<PostShuttleTotePicked xmlns="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd">
+<ToteBarcode>7785454543</ToteBarcode>
+<ReflexBatchId>A</ReflexBatchId>
+<WamasBatchId>B</WamasBatchId>
+<LastTote>true</LastTote>
+<OrderLines>
+  <OrderLine>
+    <OrderLineNumber>190000000000001</OrderLineNumber>
+    <EanBarcode>001233232444311</EanBarcode>
+    <PickedQuantity>1</PickedQuantity>
+    <BestBeforeDate>2019-08-30</BestBeforeDate>
+  </OrderLine>
+  <OrderLine>
+    <OrderLineNumber>190000000000002</OrderLineNumber>
+    <EanBarcode>001233232444312</EanBarcode>
+    <PickedQuantity>1</PickedQuantity>    
+  </OrderLine>
+</OrderLines>
+</PostShuttleTotePicked>
