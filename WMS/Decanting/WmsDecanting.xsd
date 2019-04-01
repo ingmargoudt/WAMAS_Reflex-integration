@@ -12,6 +12,7 @@
 	<xs:complexType>
 		<xs:all>
 			<xs:element name="WorkstationId" type="wms:WorkstationId" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="WorkstationSlot" type="wms:WorkstationSlot" nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ToteBarcode"   type="wms:ToteBarcode"   nillable="false" minOccurs="0" maxOccurs="1"/>		
 		</xs:all>
 	</xs:complexType>
