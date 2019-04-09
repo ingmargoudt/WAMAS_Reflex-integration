@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsDecanting.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsDecanting.xsd" elementFormDefault="qualified" version="1.0">	
+	<xs:element name="PostToteAnnouncement">
+		<xs:complexType>
+		<xs:sequence>
+			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="WorkstationId"   type="wcs:WorkstationId"   nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="WorkstationSlot" type="wcs:WorkstationSlot" nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ToteOrientation" type="wcs:ToteOrientation" nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CompartmentType" type="wcs:CompartmentType" nillable="false" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="ToteDestination" type="wcs:ToteDestination" nillable="false" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="StockItems"      type="wcs:StockItems"      nillable="false" minOccurs="0" maxOccurs="1"/>				
+		</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:element name="PostToteOnWorkstationSlotRequest">
 		<xs:complexType>
 		<xs:all>
@@ -162,6 +176,22 @@
 		</xs:all>
 	</xs:complexType>
 
+	<xs:complexType name = "StockItems">
+		<xs:sequence>
+			<xs:element name="StockItem" type="wcs:StockItem" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name = "StockItem">
+		<xs:all>
+			<xs:element name="CompartmentNumber" type="wcs:CompartmentNumber" nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="EanBarcode"        type="wcs:EanBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Quantity"          type="wcs:QuantityToPut"     nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ReceiptId"         type="wcs:ReceiptId"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BestBeforeDate"    type="wcs:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
+		</xs:all>
+	</xs:complexType>
+
 	<xs:simpleType name="ErrorId">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="10"></xs:maxLength>
@@ -261,6 +291,7 @@
 			<xs:enumeration value="Exception"></xs:enumeration>
 			<xs:enumeration value="BFC1"></xs:enumeration>
 			<xs:enumeration value="ADR"></xs:enumeration>
+			<xs:enumeration value="Shuttle"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 
