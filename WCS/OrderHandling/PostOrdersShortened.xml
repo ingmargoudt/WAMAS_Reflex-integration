@@ -2,23 +2,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PostOrdersShortened xmlns="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd">
 <Orders>
-<Order>19000000005</Order>
-<OrderLines>
-  <OrderLine>
-    <OrderLineNumber>190000000000011</OrderLineNumber>
-    <QuantityShortened>1</QuantityShortened>    
-  </OrderLine>
-  <OrderLine>
-    <OrderLineNumber>190000000000012</OrderLineNumber>
-    <QuantityShortened>1</QuantityShortened>    
-  </OrderLine>
-</OrderLines>
-<Order>19000000006</Order>
-<OrderLines>
-  <OrderLine>
-    <OrderLineNumber>190000000000017</OrderLineNumber>
-    <QuantityShortened>1</QuantityShortened>    
-  </OrderLine>
+  <Order>19000000005</Order>
+  <OrderLines>
+    <OrderLine>
+      <OrderLineNumber>190000000000011</OrderLineNumber>
+      <QuantityShortened>1</QuantityShortened>    
+    </OrderLine>
+    <OrderLine>
+      <OrderLineNumber>190000000000012</OrderLineNumber>
+      <QuantityShortened>1</QuantityShortened>    
+    </OrderLine>
   </OrderLines>
-<Orders>
+  <Order>19000000006</Order>
+  <OrderLines>
+    <OrderLine>
+      <OrderLineNumber>190000000000017</OrderLineNumber>
+      <QuantityShortened>1</QuantityShortened>    
+    </OrderLine>
+  </OrderLines>
+</Orders>
 </PostOrdersShortened
