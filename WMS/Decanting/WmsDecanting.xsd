@@ -17,15 +17,6 @@
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
-
-	<xs:element  name="UpdateStock">
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="ReasonCode"   type="wms:ReasonCode"   nillable="false" minOccurs="1" maxOccurs="1"/>
-		
-		</xs:all>
-	</xs:complexType>
-	</xs:element>
 	
 	<xs:simpleType name="ErrorId">
 		<xs:restriction base="xs:string">
