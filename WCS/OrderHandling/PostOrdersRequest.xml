@@ -2,18 +2,18 @@
 <PostOrdersRequest xmlns="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd">
 <Orders>
   <Order>
-    <OrderID></OrderID>
-    <PackingArea>202</PackingArea>
-    <AlternatePackingArea>203</AlternatePackingArea>
-    <HandoverCuttOffTime>2019-04-10T14:30:00</HandoverCuttOffTime>
+   <OrderID>19000000001</OrderID>
+   <PackingArea>202</PackingArea>
+   <AlternatePackingArea>203</AlternatePackingArea>
+   <HandoverCuttOffTime>2019-04-10T14:30:00</HandoverCuttOffTime>
   <PackingPriority>3<PackingPriority>
   <CustomerOrderEntryTime></CustomerOrderEntryTime>
   <OrderLines>
     <OrderLine>
-     <LineID></LineID> 
-    <EanBarcode></EanBarcode>
-    <Quantity>
-   </OrderLine>
+      <LineID>19000000000007</LineID> 
+      <EanBarcode>0000000000024</EanBarcode>
+      <Quantity>1<Quantity>
+    </OrderLine>
   </OrderLines>
  </Order>
 <Orders>
