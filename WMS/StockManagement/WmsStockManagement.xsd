@@ -40,7 +40,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="ReasonText">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="256"></xs:maxLength>
+		<xs:maxLength value="255"></xs:maxLength>
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="Location">

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PostToteCompartmentTypeChange xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
-	<WorkstationId>ADR003</WorkstationId>
-	<ToteBarcode>778549643</ToteBarcode>
-	<ToteOrientation>1</ToteOrientation>
-	<CompartmentType>STQ</CompartmentType>
-</PostToteCompartmentTypeChange>

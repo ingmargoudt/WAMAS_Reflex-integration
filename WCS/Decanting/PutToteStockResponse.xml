@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PutToteStockResponse xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
-	<ResponseId>RC1</ResponseId>
-	<ResponseDescription>Stock Update is compliant with Tote rules</ResponseDescription>
-</PutToteStockResponse>

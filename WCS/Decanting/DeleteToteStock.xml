@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<DeleteToteStock xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
-	<WorkstationId>EXC001</WorkstationId>
-	<ToteBarcode>7785454543</ToteBarcode>
-	<EanBarcode>123453552227</EanBarcode>
-	<CompartmentNumber>2</CompartmentNumber>
-	<QuantityToDelete>4</QuantityToDelete>
-</DeleteToteStock>
