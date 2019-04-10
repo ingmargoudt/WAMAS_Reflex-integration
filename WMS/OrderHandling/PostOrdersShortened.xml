@@ -1,6 +1,6 @@
 -- Draft version To be discussed --
 <?xml version="1.0" encoding="UTF-8"?>
-<PostOrdersShortened xmlns="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd">
+<PostOrdersShortened xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
 <Orders>
   <Order>19000000005</Order>
   <OrderLines>
@@ -21,4 +21,4 @@
     </OrderLine>
   </OrderLines>
 </Orders>
-</PostOrdersShortened
+</PostOrdersShortened>
