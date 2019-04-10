@@ -8,7 +8,7 @@
 			<xs:element name="ReasonCode"        type="wms:ReasonCode"   nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ReasonText"        type="wms:ReasonText"   nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="UpdatedAtLocation" type="wms:Location"     nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:StockItems"   nillable="false" minOccurs="0" maxOccurs="1"/>				
+			<xs:element name="StockItems"        type="wms:StockItems"   nillable="false" minOccurs="1" maxOccurs="1"/>				
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
