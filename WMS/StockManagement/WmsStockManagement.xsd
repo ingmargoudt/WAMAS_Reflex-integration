@@ -4,6 +4,7 @@
 	<xs:element  name="UpdateStock">
 	<xs:complexType>
 		<xs:all>
+			<xs:element name="ToteBarcode"       type="wms:ToteBarcode"  nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="ReasonCode"        type="wms:ReasonCode"   nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ReasonText"        type="wms:ReasonText"   nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="UpdatedAtLocation" type="wms:Location"     nillable="false" minOccurs="0" maxOccurs="1"/>
@@ -27,6 +28,11 @@
 		</xs:all>
 	</xs:complexType>
 
+	<xs:simpleType name="ToteBarcode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
 	<xs:simpleType name="ReasonCode">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="3"></xs:maxLength>
