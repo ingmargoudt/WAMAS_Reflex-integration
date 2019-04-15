@@ -3,8 +3,8 @@
 <PostOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
 <RequestID>0000000000000123</RequestID> 
 <ConfirmedOrders>
-  <OrderConfirmedID>19000000005</OrderConfirmedID>
-  <OrderConfirmedID>19000000006</OrderConfirmedID>
+  <ConfirmedOrderID>19000000005</ConfirmedOrderID>
+  <ConfirmedOrderID>19000000006</ConfirmedOrderID>
 </ConfirmedOrders>
 <ErrorOrders>
   <ErrorOrder>
