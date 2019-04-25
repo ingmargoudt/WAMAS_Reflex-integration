@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsStockManagement.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsStockManagement.xsd" elementFormDefault="qualified" version="1.0">
+
+	<xs:element  name="PostStockReportRequest">
+	<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"         type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="EANFilter"         type="wcs:EanCode"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BBDFilter"         type="wcs:BestBeforeDate" nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="StockStatusFilter" type="wcs:StockStatus"    nillable="false" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+
+	<xs:element  name="PostStockStatusChangeRequest">
+	<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"         type="wcs:RequestId"        nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="NewStockStatus"    type="wcs:StockStatus"      nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StockFilterLines"  type="wcs:StockFilterLines" nillable="false" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name = "StockFilterLines">
+		<xs:sequence>
+			<xs:element name="StockFilterLine" type="wcs:StockFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name = "StockFilterLine">
+		<xs:all>
+			<xs:element name="EanBarcode"        type="wcs:EanCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BestBeforeDate"    type="wcs:BestBeforeDate"  nillable="false" minOccurs="0" maxOccurs="1"/>					
+			<xs:element name="StockStatus"       type="wcs:StockStatus"     nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ReceiptNumber"     type="wcs:ReceiptNumber"   nillable="false" minOccurs="0" maxOccurs="1"/>							
+		</xs:all>
+	</xs:complexType>
+	
+	
+	<xs:simpleType name="RequestId">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StockStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Available"></xs:enumeration>
+			<xs:enumeration value="Unavailable"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EanCode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="BestBeforeDate">
+		<xs:restriction base="xs:date">
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="ReceiptNumber">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

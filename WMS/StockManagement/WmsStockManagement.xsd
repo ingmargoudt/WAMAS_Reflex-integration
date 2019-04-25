@@ -12,7 +12,40 @@
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
-
+	
+	<xs:element  name="PostStockReportResponse">
+	<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="ConcurrencyError"  type="xs:boolean"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MessageNumber"     type="wms:MessageNumber" nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="RequestFinished"   type="xs:boolean"        nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StockItems"        type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1"/>				
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+	
+	<xs:element  name="PostStockLockChange">
+	<xs:complexType>
+		<xs:all>
+			<xs:element name="ReasonText"        type="wms:ReasonText"    nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="LockStatus"        type="wms:LockStatus"     nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StockItems"        type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1"/>				
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+	
+	<xs:element  name="PostStockStatusChangeResponse">
+	<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"         type="wms:RequestId"         nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="NewStockStatus"    type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ChangedStockItems" type="wms:ChangedStockItems" nillable="false" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+	
+	
 	<xs:complexType name = "StockItems">
 		<xs:sequence>
 			<xs:element name="StockItem" type="wms:StockItem" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
@@ -25,6 +58,22 @@
 			<xs:element name="BestBeforeDate"    type="wms:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
 			<xs:element name="Quantity"          type="wms:Quantity"          nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="StockStatus"       type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>							
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name = "ChangedStockItems">
+		<xs:sequence>
+			<xs:element name="ChangedStockItem" type="wms:ChangedStockItem" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name = "ChangedStockItem">
+		<xs:all>
+			<xs:element name="EanBarcode"        type="wms:EanBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BestBeforeDate"    type="wms:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
+			<xs:element name="Quantity"          type="wms:Quantity"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StockStatus"       type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ReceiptNumber"     type="wms:ReceiptNumber"     nillable="false" minOccurs="0" maxOccurs="1"/>							
 		</xs:all>
 	</xs:complexType>
 
@@ -69,4 +118,29 @@
 			<xs:enumeration value="Unavailable"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="RequestId">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MessageNumber">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LockStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Locked"></xs:enumeration>
+			<xs:enumeration value="Unlocked"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ReceiptNumber">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+		
 </xs:schema>
