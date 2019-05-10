@@ -37,8 +37,7 @@
 	<xs:element name="GetToteExceptionReasonResponse">
 		<xs:complexType>
 		<xs:all>
-			<xs:element name="ReasonCode"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReasonText"          type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ExceptionReasons"    type="wcs:ExceptionReasons"    nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Errors"              type="wcs:Errors"              nillable="true"  minOccurs="0" maxOccurs="1"/>	
 		</xs:all>
 		</xs:complexType>
@@ -55,6 +54,19 @@
 		<xs:all>
 			<xs:element name="ErrorId"          type="wcs:ErrorId"          nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ErrorDescription" type="wcs:ErrorDescription" nillable="false" minOccurs="1" maxOccurs="1"/>		
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name = "ExceptionReasons">
+		<xs:sequence>
+			<xs:element name="ExceptionReason"          type="wcs:ExceptionReason"          nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name = "ExceptionReason">
+		<xs:all>
+			<xs:element name="ReasonCode"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ReasonText"          type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:all>
 	</xs:complexType>
 
@@ -134,7 +146,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="EanBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="18"></xs:maxLength>
+		<xs:maxLength value="13"></xs:maxLength>
+		<xs:minLength value="13"></xs:minLength>		
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="BestBeforeDate">
