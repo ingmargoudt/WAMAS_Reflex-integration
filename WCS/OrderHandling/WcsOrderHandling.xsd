@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd" elementFormDefault="qualified" version="1.0">	
+
+	<xs:element name="PostOrdersRequest">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"           type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="Orders"              type="wcs:Orders"         nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Orders">
+		<xs:sequence>
+			<xs:element name="Order"             type="wcs:Order"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Order">
+		<xs:all>
+			<xs:element name="OrderId"                 type="wcs:OrderId"            nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Contains the Reflex order ID + the year</xs:documentation>
+				</xs:annotation></xs:element>
+			<xs:element name="BatchId"                 type="wcs:BatchId"            nillable="true"  minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="PackingArea"             type="wcs:PackingArea"        nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="AlternativePackingArea"  type="wcs:PackingArea"        nillable="true"  minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="HandoverCutoffTime"      type="xs:dateTime"            nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="PackingPriority"         type="wcs:PackingPriority"    nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IsInternalOrder"         type="xs:boolean"             nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CustomerOrderEntryTime"  type="xs:dateTime"            nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="OrderLines"              type="wcs:OrderLines"         nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:complexType name="OrderLines">
+		<xs:sequence>
+			<xs:element name="OrderLine"             type="wcs:OrderLine"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="OrderLine">
+		<xs:all>
+			<xs:element name="OrderLineId"           type="wcs:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PickId"                type="wcs:PickId"             nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EanBarcode"            type="wcs:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Quantity"              type="wcs:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StockStatus"           type="wcs:StockStatus"        nillable="false" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="BestBeforeDate"        type="wcs:BestBeforeDate"     nillable="false" minOccurs="0" maxOccurs="1"/>					
+			<xs:element name="AllowEANSubstitution"  type="xs:boolean"             nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ReceiptId"             type="wcs:ReceiptId"          nillable="false" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	
+	
+	<xs:simpleType name="OrderId"> 
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="11"></xs:maxLength>
+		<xs:minLength value="11"></xs:minLength>		
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="OrderLineId">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9999999"></xs:maxInclusive>
+		</xs:restriction>		
+	</xs:simpleType>	
+	<xs:simpleType name="PickId">
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9999999999999"></xs:maxInclusive>
+		</xs:restriction>		
+	</xs:simpleType>		
+	<xs:simpleType name="BatchId">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="RequestId">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PackingArea">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="PackingPriority">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>	
+	<xs:simpleType name="EanBarcode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="13"></xs:maxLength>
+		<xs:minLength value="13"></xs:minLength>		
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="Quantity">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StockStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Available"></xs:enumeration>
+			<xs:enumeration value="Unavailable"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BestBeforeDate">
+		<xs:restriction base="xs:date">
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="ReceiptId">
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="99999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>	
+</xs:schema>
