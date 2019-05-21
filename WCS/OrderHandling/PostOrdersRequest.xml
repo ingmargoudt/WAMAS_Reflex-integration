@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PostOrdersRequest xmlns="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd">
+	<RequestId>123456789</RequestId>
 	<Orders>
 		<Order>
-			<OrderID>19000000001</OrderID>
+			<OrderId>19000000001</OrderId>
+			<BatchId>12401233</BatchId>
 			<PackingArea>202</PackingArea>
-			<AlternatePackingArea>203</AlternatePackingArea>
-			<HandoverCuttOffTime>2019-04-10T14:30:00</HandoverCuttOffTime>
+			<AlternativePackingArea>203</AlternativePackingArea>
+			<HandoverCutoffTime>2019-04-10T14:30:00</HandoverCutoffTime>
 			<PackingPriority>3</PackingPriority>
+			<IsInternalOrder>false</IsInternalOrder>
 			<CustomerOrderEntryTime>2019-04-09T23:05:00</CustomerOrderEntryTime>
 			<OrderLines>
 				<OrderLine>
-					<LineID>19000000000007</LineID> 
+					<OrderLineId>190000000000007</OrderLineId> 
+					<PickId>303041</PickId>
 					<EanBarcode>0000000000024</EanBarcode>
 					<Quantity>2</Quantity>
+					<StockStatus>Available</StockStatus>
+					<BestBeforeDate>2021-04-09</BestBeforeDate>
+					<AllowEANSubstitution>false</AllowEANSubstitution>
+					<ReceiptId>11100000012</ReceiptId>
 				</OrderLine>
 				<OrderLine>
-					<LineID>19000000000008</LineID> 
-					<EanBarcode>0000000000055</EanBarcode>
-					<Quantity>1</Quantity>
+					<OrderLineId>190000000000008</OrderLineId> 
+					<PickId>303042</PickId>
+					<EanBarcode>0000000000112</EanBarcode>
+					<Quantity>2</Quantity>
+					<StockStatus>Available</StockStatus>
+					<BestBeforeDate>2045-02-19</BestBeforeDate>
+					<AllowEANSubstitution>true</AllowEANSubstitution>
+					<ReceiptId>11100000012</ReceiptId>				
 				</OrderLine>
 			</OrderLines>
 		</Order>
 		<Order>
-			<OrderID>19000000002</OrderID>
+			<OrderId>19000000001</OrderId>
+			<BatchId>12401233</BatchId>
 			<PackingArea>202</PackingArea>
-			<AlternatePackingArea>203</AlternatePackingArea>
-			<HandoverCuttOffTime>2019-04-10T14:35:00</HandoverCuttOffTime>
+			<AlternativePackingArea>203</AlternativePackingArea>
+			<HandoverCutoffTime>2019-04-10T14:30:00</HandoverCutoffTime>
 			<PackingPriority>3</PackingPriority>
+			<IsInternalOrder>false</IsInternalOrder>
 			<CustomerOrderEntryTime>2019-04-09T23:05:00</CustomerOrderEntryTime>
 			<OrderLines>
 				<OrderLine>
-					<LineID>19000000000050</LineID> 
+					<OrderLineId>190000000000007</OrderLineId> 
+					<PickId>303041</PickId>
 					<EanBarcode>0000000000024</EanBarcode>
 					<Quantity>2</Quantity>
+					<StockStatus>Available</StockStatus>
+					<BestBeforeDate>2021-04-09</BestBeforeDate>
+					<AllowEANSubstitution>false</AllowEANSubstitution>
+					<ReceiptId>11100000012</ReceiptId>
+				</OrderLine>
+				<OrderLine>
+					<OrderLineId>190000000000008</OrderLineId> 
+					<PickId>303042</PickId>
+					<EanBarcode>0000000000112</EanBarcode>
+					<Quantity>2</Quantity>
+					<StockStatus>Available</StockStatus>
+					<BestBeforeDate>2045-02-19</BestBeforeDate>
+					<AllowEANSubstitution>true</AllowEANSubstitution>
+					<ReceiptId>11100000012</ReceiptId>				
 				</OrderLine>
 			</OrderLines>
 		</Order>

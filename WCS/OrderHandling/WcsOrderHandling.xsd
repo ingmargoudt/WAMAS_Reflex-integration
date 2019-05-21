@@ -23,11 +23,17 @@
 					<xs:documentation>Contains the Reflex order ID + the year</xs:documentation>
 				</xs:annotation></xs:element>
 			<xs:element name="BatchId"                 type="wcs:BatchId"            nillable="true"  minOccurs="0" maxOccurs="1"/>	
-			<xs:element name="PackingArea"             type="wcs:PackingArea"        nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="PackingArea"             type="wcs:PackingArea"        nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indication of the area where the order will be packed. The warehouse designation is also included (BFC1 or BFC2).</xs:documentation>
+				</xs:annotation></xs:element>	
 			<xs:element name="AlternativePackingArea"  type="wcs:PackingArea"        nillable="true"  minOccurs="0" maxOccurs="1"/>	
 			<xs:element name="HandoverCutoffTime"      type="xs:dateTime"            nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="PackingPriority"         type="wcs:PackingPriority"    nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="IsInternalOrder"         type="xs:boolean"             nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IsInternalOrder"         type="xs:boolean"             nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates an 'NCO' order</xs:documentation>
+				</xs:annotation></xs:element>
 			<xs:element name="CustomerOrderEntryTime"  type="xs:dateTime"            nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="OrderLines"              type="wcs:OrderLines"         nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:all>
@@ -46,7 +52,7 @@
 			<xs:element name="EanBarcode"            type="wcs:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Quantity"              type="wcs:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="StockStatus"           type="wcs:StockStatus"        nillable="false" minOccurs="0" maxOccurs="1"/>			
-			<xs:element name="BestBeforeDate"        type="wcs:BestBeforeDate"     nillable="false" minOccurs="0" maxOccurs="1"/>					
+			<xs:element name="BestBeforeDate"        type="xs:date"                nillable="false" minOccurs="0" maxOccurs="1"/>					
 			<xs:element name="AllowEANSubstitution"  type="xs:boolean"             nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="ReceiptId"             type="wcs:ReceiptId"          nillable="false" minOccurs="0" maxOccurs="1"/>
 		</xs:all>
@@ -60,9 +66,9 @@
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="OrderLineId">
-		<xs:restriction base="xs:int">
-			<xs:minInclusive value="1"></xs:minInclusive>
-			<xs:maxInclusive value="9999999"></xs:maxInclusive>
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="15"></xs:maxLength>
+		<xs:minLength value="15"></xs:minLength>		
 		</xs:restriction>		
 	</xs:simpleType>	
 	<xs:simpleType name="PickId">
@@ -110,10 +116,6 @@
 			<xs:enumeration value="Available"></xs:enumeration>
 			<xs:enumeration value="Unavailable"></xs:enumeration>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="BestBeforeDate">
-		<xs:restriction base="xs:date">
-		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="ReceiptId">
 		<xs:restriction base="xs:long">
