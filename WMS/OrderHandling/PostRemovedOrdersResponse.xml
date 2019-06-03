@@ -4,13 +4,13 @@
 <RequestID>0000000000000123</RequestID>
     <Order>		
         <OrderId>19000000001</OrderId>
-			      <OrderLine>
-								<OrderLineId>190000000000007</OrderLineId>
-                <Cancellation>Done</Cancellation>
-            </OrderLine>
-            <OrderLine>
-                <OrderLineId>190000000000008</OrderLineId>
-                <Cancellation>Refused</Cancellation>
-			      </OrderLine>
+			      	<OrderLine>
+					<OrderLineId>190000000000007</OrderLineId>
+                			<Cancellation>Done</Cancellation>
+            		     	</OrderLine>
+ 			        <OrderLine>
+                			<OrderLineId>190000000000008</OrderLineId>
+                			<Cancellation>Refused</Cancellation>
+			       </OrderLine>
     </Order>		
 </PostRemovedOrdersResponse>
