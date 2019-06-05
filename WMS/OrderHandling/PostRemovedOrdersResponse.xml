@@ -1,0 +1,16 @@
+-- Draft version To be discussed --
+<?xml version="1.0" encoding="UTF-8"?>
+<PostRemovedOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
+<RequestID>0000000000000123</RequestID>
+    <Order>		
+        <OrderId>19000000001</OrderId>
+			      	<OrderLine>
+					<OrderLineId>190000000000007</OrderLineId>
+                			<Cancellation>Done</Cancellation>
+            		     	</OrderLine>
+ 			        <OrderLine>
+                			<OrderLineId>190000000000008</OrderLineId>
+                			<Cancellation>Refused</Cancellation>
+			       </OrderLine>
+    </Order>		
+</PostRemovedOrdersResponse>
