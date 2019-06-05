@@ -4,18 +4,18 @@
 	<Orders>
 		<Order>		
         <OrderId>19000000001</OrderId>
-			      <OrderLines>
-								<OrderLineId>190000000000007</OrderLineId>
+		<OrderLines>
+				<OrderLineId>190000000000007</OrderLineId>
                 <OrderLineId>190000000000008</OrderLineId>
-			      </OrderLines>
+		</OrderLines>
     </Order>		
-    <Order>		
+    	<Order>		
         <OrderId>19000000002</OrderId>
-			      <OrderLines>
-								<OrderLineId>190000000000010</OrderLineId>
-                <OrderLineId>190000000000011</OrderLineId>
-                <OrderLineId>190000000000014</OrderLineId>
-			      </OrderLines>
+		<OrderLines>
+			<OrderLineId>190000000000010</OrderLineId>
+            <OrderLineId>190000000000011</OrderLineId>
+            <OrderLineId>190000000000014</OrderLineId>
+      </OrderLines>
     </Order>	
   </Orders>	
 </PostRemoveOrdersRequest>
