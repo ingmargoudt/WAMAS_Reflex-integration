@@ -3,19 +3,19 @@
 <PostOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
 <RequestID>0000000000000123</RequestID> 
 <ConfirmedOrders>
-  <ConfirmedOrderID>19000000005</ConfirmedOrderID>
-  <ConfirmedOrderID>19000000006</ConfirmedOrderID>
+  <OrderID>19000000005</ConfirmedOrderID>
+  <OrderID>19000000006</ConfirmedOrderID>
 </ConfirmedOrders>
-<ErrorOrders>
-  <ErrorOrder>
-    <ErrorOrderID>19000000007</ErrorOrderID>
-    <ErrorReason>X01</ErrorReason>
+<RejectedOrders>
+  <RejectedOrder>
+    <OrderID>19000000007</ErrorOrderID>
+    <ErrorCode>X01</ErrorReason>
     <ErrorText>Already processed</ErrorText>
    </ErrorOrder> 
-   <ErrorOrder>
-    <ErrorOrderID>19000000011</ErrorOrderID>
-    <ErrorReasonCode>X02</ErrorReason>
+   <RejectedOrder>
+    <OrderID>19000000011</ErrorOrderID>
+    <ErrorCode>X02</ErrorReason>
     <ErrorText>Already processed</ErrorText>    
-   </ErrorOrder> 
-</ErrorOrders>
+   </RejectedOrder> 
+</RejectedOrders>
 </PostOrdersResponse>
