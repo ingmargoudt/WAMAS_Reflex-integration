@@ -10,10 +10,33 @@
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="PostRemoveOrdersRequest">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"           type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="Orders"              type="wcs:RemoveOrders"   nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+
 	<xs:complexType name="Orders">
 		<xs:sequence>
 			<xs:element name="Order"             type="wcs:Order"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RemoveOrders">
+		<xs:sequence>
+			<xs:element name="Order"             type="wcs:RemoveOrder"   nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RemoveOrder">
+		<xs:all>
+			<xs:element name="OrderId"                 type="wcs:OrderId"            nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OrderLines"              type="wcs:RemoveOrderLines"   nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>	
 	</xs:complexType>
 	
 	<xs:complexType name="Order">
@@ -42,6 +65,12 @@
 	<xs:complexType name="OrderLines">
 		<xs:sequence>
 			<xs:element name="OrderLine"             type="wcs:OrderLine"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RemoveOrderLines">
+		<xs:sequence>
+			<xs:element name="OrderLineId"           type="wcs:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	
