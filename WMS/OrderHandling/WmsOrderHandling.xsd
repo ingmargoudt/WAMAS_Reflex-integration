@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wms="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd" targetNamespace="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd" elementFormDefault="qualified" version="1.0">	
+
+	<xs:element name="PostOrdersResponse">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"           type="wms:RequestId"          nillable="false" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="ConfirmedOrders"     type="wms:ConfirmedOrders"    nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="RejectedOrders"      type="wms:RejectedOrders"     nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+	
+		
+	
+	<xs:complexType name="ConfirmedOrders">
+		<xs:sequence>
+			<xs:element name="OrderId"                 type="wms:OrderId"            nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RejectedOrders">
+		<xs:sequence>
+			<xs:element name="RejectedOrder"             type="wms:RejectedOrder"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RejectedOrder">
+		<xs:all>
+			<xs:element name="OrderId"                 type="wms:OrderId"            nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ReasonCode"              type="wms:ReasonCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ReasonText"              type="wms:ReasonText"         nillable="false" minOccurs="1" maxOccurs="1"/>
+
+		</xs:all>
+	</xs:complexType>
+
+	
+	<xs:simpleType name="OrderId"> 
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="11"></xs:maxLength>
+		<xs:minLength value="11"></xs:minLength>		
+		</xs:restriction>		
+	</xs:simpleType>
+	
+	<xs:simpleType name="RequestId">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReasonCode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="3"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="ReasonText">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="255"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>	
+			
+</xs:schema>

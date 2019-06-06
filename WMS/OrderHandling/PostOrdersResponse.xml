@@ -1,21 +1,20 @@
--- Draft version To be discussed --
 <?xml version="1.0" encoding="UTF-8"?>
 <PostOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
-<RequestID>0000000000000123</RequestID> 
+<RequestId>0000000000000123</RequestId> 
 <ConfirmedOrders>
-  <OrderID>19000000005</ConfirmedOrderID>
-  <OrderID>19000000006</ConfirmedOrderID>
+  <OrderId>19000000005</OrderId>
+  <OrderId>19000000006</OrderId>
 </ConfirmedOrders>
 <RejectedOrders>
   <RejectedOrder>
-    <OrderID>19000000007</ErrorOrderID>
-    <ErrorCode>X01</ErrorReason>
-    <ErrorText>Already processed</ErrorText>
-   </ErrorOrder> 
+    <OrderId>19000000007</OrderId>
+    <ReasonCode>X01</ReasonCode>
+    <ReasonText>Already processed</ReasonText>
+   </RejectedOrder> 
    <RejectedOrder>
-    <OrderID>19000000011</ErrorOrderID>
-    <ErrorCode>X02</ErrorReason>
-    <ErrorText>Already processed</ErrorText>    
+    <OrderId>19000000011</OrderId>
+    <ReasonCode>X02</ReasonCode>
+    <ReasonText>Already processed</ReasonText>    
    </RejectedOrder> 
 </RejectedOrders>
 </PostOrdersResponse>
