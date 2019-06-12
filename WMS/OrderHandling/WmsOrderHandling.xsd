@@ -19,7 +19,21 @@
 		</xs:all>
 		</xs:complexType>
 	</xs:element>
-		
+
+	<xs:element name="PostShuttleTotePicked">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="ToteBarcode"           type="wms:ToteBarcode"          nillable="false" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="WMSBatchId"            type="wms:BatchId"              nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="WCSBatchId"            type="wms:BatchId"              nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IsLastToteOfBatch"     type="xs:boolean"               nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Orders"                type="wms:PickedOrders"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BestBeforeDate"        type="wms:BestBeforeDate"       nillable="false" minOccurs="0" maxOccurs="1"/>
+
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
 	
 	<xs:complexType name="ConfirmedOrders">
 		<xs:sequence>
@@ -68,7 +82,33 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<xs:complexType name="PickedOrders">
+		<xs:sequence>
+			<xs:element name="Order"                 type="wms:PickedOrder"            nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
 
+	<xs:complexType name="PickedOrder">
+		<xs:all>
+			<xs:element name="OrderId"                 type="wms:OrderId"            nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OrderLines"              type="wms:PickedOrderLines"   nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>	
+	</xs:complexType>
+	
+	<xs:complexType name="PickedOrderLines">
+		<xs:sequence>
+			<xs:element name="OrderLine"           type="wms:PickedOrderLine"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PickedOrderLine">
+		<xs:sequence>
+			<xs:element name="OrderLineId"           type="wms:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PickId"                type="wms:PickId"             nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EanBarcode"            type="wms:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PickQuantity"          type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
 	
 	<xs:simpleType name="OrderId"> 
 		<xs:restriction base="xs:string">
@@ -101,6 +141,42 @@
 		<xs:minLength value="15"></xs:minLength>		
 		</xs:restriction>		
 	</xs:simpleType>	
+	
+	<xs:simpleType name="BatchId">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
 
+	<xs:simpleType name="ToteBarcode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	
+		<xs:simpleType name="PickId">
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9999999999999"></xs:maxInclusive>
+		</xs:restriction>		
+	</xs:simpleType>
+	
+	<xs:simpleType name="EanBarcode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="13"></xs:maxLength>
+		<xs:minLength value="13"></xs:minLength>		
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="Quantity">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="BestBeforeDate">
+		<xs:restriction base="xs:date">
+		</xs:restriction>		
+	</xs:simpleType>
 			
 </xs:schema>

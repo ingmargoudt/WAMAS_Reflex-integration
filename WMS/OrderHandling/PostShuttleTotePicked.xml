@@ -1,21 +1,42 @@
--- Draft version To be discussed --
 <?xml version="1.0" encoding="UTF-8"?>
 <PostShuttleTotePicked xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
-<ToteBarcode>7785454543</ToteBarcode>
-<ReflexBatchId>A</ReflexBatchId>
-<WamasBatchId>B</WamasBatchId>
-<LastTote>true</LastTote>
-<OrderLines>
-  <OrderLine>
-    <OrderLineNumber>190000000000001</OrderLineNumber>
-    <EanBarcode>001233232444311</EanBarcode>
-    <PickedQuantity>1</PickedQuantity>
-    <BestBeforeDate>2019-08-30</BestBeforeDate>
-  </OrderLine>
-  <OrderLine>
-    <OrderLineNumber>190000000000002</OrderLineNumber>
-    <EanBarcode>001233232444312</EanBarcode>
-    <PickedQuantity>1</PickedQuantity>    
-  </OrderLine>
-</OrderLines>
+	<ToteBarcode>100011122233300012</ToteBarcode>
+	<WMSBatchId>123456789</WMSBatchId>
+	<IsLastToteOfBatch>false</IsLastToteOfBatch>
+	<Orders>
+		<Order>		
+        <OrderId>19000000001</OrderId>
+		<OrderLines>
+			<OrderLine>
+				<OrderLineId>190000000000007</OrderLineId>
+				<PickId>14310043112</PickId>
+				<EanBarcode>1000000000034</EanBarcode>
+				<PickQuantity>1</PickQuantity>
+			</OrderLine>
+			<OrderLine>
+		        <OrderLineId>190000000000008</OrderLineId>
+				<PickId>14310043113</PickId>
+				<EanBarcode>1000000000035</EanBarcode>
+				<PickQuantity>1</PickQuantity>
+		    </OrderLine>    
+		</OrderLines>
+		</Order>
+		<Order>		
+        <OrderId>19000000002</OrderId>
+		<OrderLines>
+			<OrderLine>
+				<OrderLineId>190000000000088</OrderLineId>
+				<PickId>14310043111</PickId>
+				<EanBarcode>1000000000014</EanBarcode>
+				<PickQuantity>1</PickQuantity>
+			</OrderLine>
+			<OrderLine>
+		        <OrderLineId>190000000000066</OrderLineId>
+				<PickId>14310043119</PickId>
+				<EanBarcode>1000000000039</EanBarcode>
+				<PickQuantity>1</PickQuantity>
+		    </OrderLine>    
+		</OrderLines>
+		</Order>
+	</Orders>	
 </PostShuttleTotePicked>
