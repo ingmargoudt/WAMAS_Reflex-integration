@@ -34,6 +34,13 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="PostOrdersShortened">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="Orders"              type="wms:ShortenedOrders"      nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
 	
 	<xs:complexType name="ConfirmedOrders">
 		<xs:sequence>
@@ -107,6 +114,32 @@
 			<xs:element name="PickId"                type="wms:PickId"             nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="EanBarcode"            type="wms:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="PickQuantity"          type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+		<xs:complexType name="ShortenedOrders">
+		<xs:sequence>
+			<xs:element name="Order"                 type="wms:ShortenedOrder"            nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ShortenedOrder">
+		<xs:all>
+			<xs:element name="OrderId"                 type="wms:OrderId"               nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OrderLines"              type="wms:ShortenedOrderLines"   nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>	
+	</xs:complexType>
+	
+	<xs:complexType name="ShortenedOrderLines">
+		<xs:sequence>
+			<xs:element name="OrderLine"           type="wms:ShortenedOrderLine"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ShortenedOrderLine">
+		<xs:sequence>
+			<xs:element name="OrderLineId"           type="wms:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ShortenedQuantity"     type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	

@@ -1,24 +1,31 @@
--- Draft version To be discussed --
 <?xml version="1.0" encoding="UTF-8"?>
 <PostOrdersShortened xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
-<Orders>
-  <Order>19000000005</Order>
-  <OrderLines>
-    <OrderLine>
-      <OrderLineNumber>190000000000011</OrderLineNumber>
-      <QuantityShortened>1</QuantityShortened>    
-    </OrderLine>
-    <OrderLine>
-      <OrderLineNumber>190000000000012</OrderLineNumber>
-      <QuantityShortened>1</QuantityShortened>    
-    </OrderLine>
-  </OrderLines>
-  <Order>19000000006</Order>
-  <OrderLines>
-    <OrderLine>
-      <OrderLineNumber>190000000000017</OrderLineNumber>
-      <QuantityShortened>1</QuantityShortened>    
-    </OrderLine>
-  </OrderLines>
-</Orders>
+	<Orders>
+		<Order>		
+        <OrderId>19000000001</OrderId>
+		<OrderLines>
+			<OrderLine>
+				<OrderLineId>190000000000007</OrderLineId>
+				<ShortenedQuantity>1</ShortenedQuantity>
+			</OrderLine>
+			<OrderLine>
+		        <OrderLineId>190000000000008</OrderLineId>
+				<ShortenedQuantity>1</ShortenedQuantity>
+		    </OrderLine>    
+		</OrderLines>
+		</Order>
+		<Order>		
+        <OrderId>19000000002</OrderId>
+		<OrderLines>
+			<OrderLine>
+				<OrderLineId>190000000000088</OrderLineId>
+				<ShortenedQuantity>3</ShortenedQuantity>
+			</OrderLine>
+			<OrderLine>
+		        <OrderLineId>190000000000066</OrderLineId>
+				<ShortenedQuantity>12</ShortenedQuantity>
+		    </OrderLine>    
+		</OrderLines>
+		</Order>
+	</Orders>	
 </PostOrdersShortened>
