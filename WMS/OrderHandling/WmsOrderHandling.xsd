@@ -111,7 +111,7 @@
 	<xs:complexType name="PickedOrderLine">
 		<xs:sequence>
 			<xs:element name="OrderLineId"           type="wms:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="PickId"                type="wms:PickId"             nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PickId"                type="wms:PickId"             nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="EanBarcode"            type="wms:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="PickQuantity"          type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
