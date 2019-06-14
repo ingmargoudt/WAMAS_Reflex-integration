@@ -19,6 +19,15 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="PostUnfulfillableOrdersRequest">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="RequestId"           type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="MaximumCutoffTime"   type="wcs:CutoffTime"     nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
 
 	<xs:complexType name="Orders">
 		<xs:sequence>
@@ -87,7 +96,10 @@
 		</xs:all>
 	</xs:complexType>
 	
-	
+	<xs:simpleType name="CutoffTime"> 
+		<xs:restriction base="xs:dateTime">
+		</xs:restriction>		
+	</xs:simpleType>	
 	<xs:simpleType name="OrderId"> 
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="11"></xs:maxLength>

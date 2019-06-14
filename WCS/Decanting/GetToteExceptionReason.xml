@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetToteExceptionReason xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+<ToteBarcode>100231111112333244</ToteBarcode>
+</GetToteExceptionReason>
