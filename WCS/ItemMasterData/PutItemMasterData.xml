@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PutItemMasterData xmlns="http://www.hardis-group.com/schemas/WcsItemMasterData.xsd">
+	<Items>
+		<Item>
+			<Eancode>3424343422223</Eancode>
+			<SellerId>112231221212</SellerId>
+			<GlobalId>111111112222123</GlobalId>
+			<ItemDescription>Testitem 123</ItemDescription>
+			<ItemDimensions>
+				<ItemLength>12.44</ItemLength>
+				<ItemWidth>1.31</ItemWidth>
+				<ItemHeight>345.00</ItemHeight>
+			</ItemDimensions>
+			<ItemWeight>40.21</ItemWeight>
+			<ItemVolume>200</ItemVolume>
+			<CleanUpFlag>true</CleanUpFlag>
+			<BBDRequired>false</BBDRequired>
+		</Item>
+	</Items>
+</PutItemMasterData>

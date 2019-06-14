@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsItemMasterData.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsItemMasterData.xsd" elementFormDefault="qualified" version="1.0">
+
+	<xs:element  name="PutItemMasterData">
+	<xs:complexType>
+		<xs:all>
+			<xs:element name="Items"   type="wcs:Items"  nillable="false" minOccurs="1" maxOccurs="1"/>	
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:complexType name = "Items">
+		<xs:sequence>
+			<xs:element name="Item"   type="wcs:Item"  nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name = "Item">
+		<xs:all>
+			<xs:element name="Eancode"           type="wcs:EanCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SellerId"          type="wcs:SellerId"        nillable="false" minOccurs="1" maxOccurs="1"/>					
+			<xs:element name="GlobalId"          type="wcs:GlobalId"        nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemDescription"   type="wcs:ItemDescription" nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemDimensions"    type="wcs:ItemDimensions"  nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemWeight"        type="wcs:Weight"          nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemVolume"        type="wcs:Volume"          nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="CleanUpFlag"       type="xs:boolean"          nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="BBDRequired"       type="xs:boolean"          nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+
+	<xs:complexType name = "ItemDimensions">
+		<xs:all>
+			<xs:element name="ItemLength"           type="wcs:ItemDimension"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ItemWidth"            type="wcs:ItemDimension"         nillable="false" minOccurs="1" maxOccurs="1"/>					
+			<xs:element name="ItemHeight"           type="wcs:ItemDimension"         nillable="false" minOccurs="1" maxOccurs="1"/>							
+
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:simpleType name="EanCode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="13"></xs:maxLength>
+		<xs:minLength value="13"></xs:minLength>		
+		</xs:restriction>		
+	</xs:simpleType>
+	
+	<xs:simpleType name="SellerId">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	
+	<xs:simpleType name="GlobalId">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="16"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+
+	<xs:simpleType name="ItemDescription">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="255"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	
+	<xs:simpleType name="ItemDimension">
+		<xs:restriction base="xs:decimal">
+		<xs:totalDigits    value="7"></xs:totalDigits>
+		<xs:fractionDigits value="2"></xs:fractionDigits>
+		</xs:restriction>		
+	</xs:simpleType>
+
+	<xs:simpleType name="Volume">
+		<xs:restriction base="xs:decimal">
+		<xs:totalDigits    value="7"></xs:totalDigits>
+		<xs:fractionDigits value="2"></xs:fractionDigits>
+		</xs:restriction>		
+	</xs:simpleType>
+
+	<xs:simpleType name="Weight">
+		<xs:restriction base="xs:decimal">
+		<xs:totalDigits    value="9"></xs:totalDigits>
+		<xs:fractionDigits value="2"></xs:fractionDigits>
+		</xs:restriction>		
+	</xs:simpleType>
+
+</xs:schema>

@@ -99,7 +99,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="EanBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="18"></xs:maxLength>
+		<xs:maxLength value="13"></xs:maxLength>
+		<xs:minLength value="13"></xs:minLength>		
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="BestBeforeDate">
