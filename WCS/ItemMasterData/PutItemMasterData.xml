@@ -16,5 +16,20 @@
 			<CleanUpFlag>true</CleanUpFlag>
 			<BBDRequired>false</BBDRequired>
 		</Item>
+		<Item>
+			<Eancode>3424343422112</Eancode>
+			<SellerId>112231220000</SellerId>
+			<GlobalId>111111112000123</GlobalId>
+			<ItemDescription>Testitem XXX</ItemDescription>
+			<ItemDimensions>
+				<ItemLength>12.41</ItemLength>
+				<ItemWidth>3.31</ItemWidth>
+				<ItemHeight>3</ItemHeight>
+			</ItemDimensions>
+			<ItemWeight>40</ItemWeight>
+			<ItemVolume>200000</ItemVolume>
+			<CleanUpFlag>true</CleanUpFlag>
+			<BBDRequired>false</BBDRequired>
+		</Item>
 	</Items>
 </PutItemMasterData>
