@@ -15,23 +15,23 @@
 		<xs:all>
 			<xs:element name="RequestId"         type="wcs:RequestId"        nillable="false" minOccurs="1" maxOccurs="1"/>	
 			<xs:element name="NewStockStatus"    type="wcs:StockStatus"      nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockFilterLines"  type="wcs:StockFilterLines" nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FilterLines"       type="wcs:StockFilterLines" nillable="false" minOccurs="0" maxOccurs="1"/>
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
 	
 	<xs:complexType name = "StockFilterLines">
 		<xs:sequence>
-			<xs:element name="StockFilterLine" type="wcs:StockFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+			<xs:element name="FilterLine" type="wcs:StockFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name = "StockFilterLine">
 		<xs:all>
-			<xs:element name="EanBarcode"        type="wcs:EanCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="BestBeforeDate"    type="wcs:BestBeforeDate"  nillable="false" minOccurs="0" maxOccurs="1"/>					
-			<xs:element name="StockStatus"       type="wcs:StockStatus"     nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ReceiptNumber"     type="wcs:ReceiptNumber"   nillable="false" minOccurs="0" maxOccurs="1"/>							
+			<xs:element name="EanBarcode"         type="wcs:EanCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CurrentStockStatus" type="wcs:StockStatus"     nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="BestBeforeDate"     type="wcs:BestBeforeDate"  nillable="false" minOccurs="0" maxOccurs="1"/>					
+			<xs:element name="ReceiptNumber"      type="wcs:ReceiptNumber"   nillable="false" minOccurs="0" maxOccurs="1"/>							
 		</xs:all>
 	</xs:complexType>
 	
