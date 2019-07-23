@@ -89,7 +89,7 @@
 
 	<xs:simpleType name="ErrorId">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="10"></xs:maxLength>
+			<xs:maxLength value="10"></xs:maxLength>
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="ErrorDescription">
@@ -99,7 +99,14 @@
 	</xs:simpleType>
 		<xs:simpleType name="ResponseId">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="3"></xs:maxLength>
+			<xs:enumeration value="X01"></xs:enumeration>
+			<xs:enumeration value="X02"></xs:enumeration>
+			<xs:enumeration value="X03"></xs:enumeration>
+			<xs:enumeration value="X04"></xs:enumeration>
+			<xs:enumeration value="X05"></xs:enumeration>
+			<xs:enumeration value="X06"></xs:enumeration>
+			<xs:enumeration value="X07"></xs:enumeration>
+			<xs:enumeration value="X08"></xs:enumeration>			
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="ResponseDescription">

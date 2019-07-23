@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetToteExceptionReasonResponse xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
+<ExceptionReasons>
+	<ExceptionReason>
+		<ReasonCode>X05</ReasonCode>
+		<ReasonText>Compartment Configuration Unknown</ReasonText>
+	</ExceptionReason>
+</ExceptionReasons>
+<Errors>
+	<Error>
+		<ErrorId>SSI0001</ErrorId>
+		<ErrorDescription>Tote unknown</ErrorDescription>
+	</Error>
+</Errors> 
+</GetToteExceptionReasonResponse>
