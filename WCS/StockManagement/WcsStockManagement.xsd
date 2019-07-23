@@ -4,10 +4,8 @@
 	<xs:element  name="PostStockReportRequest">
 	<xs:complexType>
 		<xs:all>
-			<xs:element name="RequestId"         type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="EANFilter"         type="wcs:EanCode"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="BBDFilter"         type="wcs:BestBeforeDate" nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="StockStatusFilter" type="wcs:StockStatus"    nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RequestId"         type="wcs:RequestId"               nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="FilterLines"       type="wcs:StockRequestFilterLines" nillable="false" minOccurs="0" maxOccurs="1"/>
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
@@ -37,6 +35,19 @@
 		</xs:all>
 	</xs:complexType>
 	
+	<xs:complexType name = "StockRequestFilterLines">
+		<xs:sequence>
+			<xs:element name="FilterLine" type="wcs:StockRequestFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name = "StockRequestFilterLine">
+		<xs:choice>
+			<xs:element name="EanBarcode"        type="wcs:EanCode"         nillable="false" />		
+			<xs:element name="BestBeforeDate"    type="wcs:BestBeforeDate"  nillable="false" />					
+			<xs:element name="StockStatus"       type="wcs:StockStatus"     nillable="false" />							
+		</xs:choice>
+	</xs:complexType>
 	
 	<xs:simpleType name="RequestId">
 		<xs:restriction base="xs:int">
