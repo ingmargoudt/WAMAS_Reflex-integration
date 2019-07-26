@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostUnfulfillableOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
+	<RequestId>123456789</RequestId>
+	<Orders>
+		<Order>		
+        <OrderId>19000000001</OrderId>
+		<OrderLines>
+			<OrderLine>
+				<OrderLineId>190000000000007</OrderLineId>
+				<RequestedQuantity>1</RequestedQuantity>
+				<AvailableQuantity>20</AvailableQuantity>
+			</OrderLine>
+			<OrderLine>
+		        <OrderLineId>190000000000008</OrderLineId>
+				<RequestedQuantity>1</RequestedQuantity>
+				<AvailableQuantity>20</AvailableQuantity>
+		    </OrderLine>    
+		</OrderLines>
+		</Order>
+		<Order>		
+        <OrderId>19000000002</OrderId>
+		<OrderLines>
+			<OrderLine>
+				<OrderLineId>190000000000088</OrderLineId>
+				<RequestedQuantity>1</RequestedQuantity>
+				<AvailableQuantity>20</AvailableQuantity>
+			</OrderLine>
+			<OrderLine>
+		        <OrderLineId>190000000000066</OrderLineId>
+				<RequestedQuantity>1</RequestedQuantity>
+				<AvailableQuantity>20</AvailableQuantity>
+		    </OrderLine>    
+		</OrderLines>
+		</Order>
+	</Orders>	
+</PostUnfulfillableOrdersResponse>

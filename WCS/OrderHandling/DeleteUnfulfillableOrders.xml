@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeleteUnfulfillableOrders xmlns="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd">
+	<DeletedOrLocked>Delete</DeletedOrLocked>
+	<Orders>
+        <OrderId>19000000001</OrderId>
+        <OrderId>19000000002</OrderId>
+        <OrderId>19000000003</OrderId>
+        <OrderId>19000000004</OrderId>
+        <OrderId>19000000005</OrderId>        
+	</Orders>	
+</DeleteUnfulfillableOrders>

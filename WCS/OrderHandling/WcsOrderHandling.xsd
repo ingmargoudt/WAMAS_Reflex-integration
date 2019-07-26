@@ -28,6 +28,15 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="DeleteUnfulfillableOrders">
+		<xs:complexType>
+		<xs:all>
+			<xs:element name="DeletedOrLocked"     type="wcs:Action"                 nillable="false" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="Orders"              type="wcs:DeletedOrLockedOrders"  nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>
+		</xs:complexType>
+	</xs:element>
+
 
 	<xs:complexType name="Orders">
 		<xs:sequence>
@@ -95,6 +104,14 @@
 			<xs:element name="ReceiptId"             type="wcs:ReceiptId"          nillable="false" minOccurs="0" maxOccurs="1"/>
 		</xs:all>
 	</xs:complexType>
+	
+	
+	<xs:complexType name="DeletedOrLockedOrders">
+		<xs:sequence>
+			<xs:element name="OrderId" type="wcs:OrderId" nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
 	
 	<xs:simpleType name="CutoffTime"> 
 		<xs:restriction base="xs:dateTime">
@@ -164,4 +181,11 @@
 			<xs:maxInclusive value="99999999999"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>	
+	<xs:simpleType name="Action">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Delete"></xs:enumeration>
+			<xs:enumeration value="Lock"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
 </xs:schema>
