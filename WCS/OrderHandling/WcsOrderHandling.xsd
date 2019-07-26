@@ -183,8 +183,8 @@
 	</xs:simpleType>	
 	<xs:simpleType name="Action">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="Delete"></xs:enumeration>
-			<xs:enumeration value="Lock"></xs:enumeration>
+			<xs:enumeration value="Deleted"></xs:enumeration>
+			<xs:enumeration value="Locked"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	
