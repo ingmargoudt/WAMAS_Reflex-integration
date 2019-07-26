@@ -6,10 +6,5 @@
 		<ReasonText>Compartment Configuration Unknown</ReasonText>
 	</ExceptionReason>
 </ExceptionReasons>
-<Errors>
-	<Error>
-		<ErrorId>SSI0001</ErrorId>
-		<ErrorDescription>Tote unknown</ErrorDescription>
-	</Error>
-</Errors> 
+
 </GetToteExceptionReasonResponse>

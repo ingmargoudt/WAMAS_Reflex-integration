@@ -36,10 +36,10 @@
 
 	<xs:element name="GetToteExceptionReasonResponse">
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="ExceptionReasons"    type="wcs:ExceptionReasons"    nillable="false" minOccurs="1" maxOccurs="1"/>
+		<xs:choice>
+			<xs:element name="ExceptionReasons"    type="wcs:ExceptionReasons"    nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="Errors"              type="wcs:Errors"              nillable="true"  minOccurs="0" maxOccurs="1"/>	
-		</xs:all>
+		</xs:choice>
 		</xs:complexType>
 	</xs:element>
 
