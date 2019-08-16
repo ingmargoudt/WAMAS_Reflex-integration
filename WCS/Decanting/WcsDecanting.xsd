@@ -20,7 +20,7 @@
 		<xs:all>
 			<xs:element name="ResponseId"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ResponseDescription" type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Errors"              type="wcs:Errors"              nillable="true"  minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="Errors"              type="wcs:Errors"              nillable="false" minOccurs="0" maxOccurs="1"/>	
 		</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -38,7 +38,7 @@
 		<xs:complexType>
 		<xs:choice>
 			<xs:element name="ExceptionReasons"    type="wcs:ExceptionReasons"    nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Errors"              type="wcs:Errors"              nillable="true"  minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="Errors"              type="wcs:Errors"              nillable="false" minOccurs="0" maxOccurs="1"/>	
 		</xs:choice>
 		</xs:complexType>
 	</xs:element>
