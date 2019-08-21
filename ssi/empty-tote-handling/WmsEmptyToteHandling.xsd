@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wms="http://www.hardis-group.com/schemas/WmsEmptyToteHandling.xsd" targetNamespace="http://www.hardis-group.com/schemas/WmsEmptyToteHandling.xsd" elementFormDefault="qualified" version="1.0">
+	<xs:element name="PostWamasEmptyTotesNeeded">
+		<xs:annotation>
+			<xs:documentation>Is sent when BFC2 needs Empty totes from BFC1. Will overwrite earlier requests if they are not fulfilled yet.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="NumberOfTotes" type="wms:NumberOfTotes" nillable="false" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PostEmptyTotesToReflex">
+		<xs:annotation>
+			<xs:documentation>Is sent before empty totes are sent from BFC2 to BFC1.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ToteBarcodes" type="wms:ToteBarcodes" nillable="false" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="ToteBarcodes">
+		<xs:sequence>
+			<xs:element name="ToteBarcode" type="wms:ToteBarcode" nillable="false" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ToteBarcode">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumberOfTotes">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="500"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

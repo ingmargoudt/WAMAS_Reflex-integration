@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsStatus.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsStatus.xsd" elementFormDefault="qualified" version="1.0">
+	<xs:element name="GetRequestStateRequest">
+		<xs:annotation>
+			<xs:documentation>Returns the state of the request with the given tracking id.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TrackingId" type="wcs:TrackingId" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Tracking id</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="GetRequestStateResponse">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Result" type="wcs:GetRequestStateResult" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Filled if no error occured</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Error" type="wcs:GetRequestStateError" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Filled if error occured</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:simpleType name="GetRequestStateError">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EC01_TRACKING_ID_UNKNOWN"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GetRequestStateResult">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RC01_CREATED"></xs:enumeration>
+			<xs:enumeration value="RC02_OPEN"></xs:enumeration>
+			<xs:enumeration value="RC03_FAILED"></xs:enumeration>
+			<xs:enumeration value="RC04_FAILED_FINALLY"></xs:enumeration>
+			<xs:enumeration value="RC05_SUCCEDED"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="TrackingId">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

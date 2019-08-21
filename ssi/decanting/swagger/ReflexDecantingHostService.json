@@ -1,0 +1,57 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the interface definition for the ReflexDecantingHostService Interface",
+    "title": "ReflexDecantingHostService",
+    "version": "1.0.0",
+    "contact": {
+      "email": "christoph.dunker@ssi-schaefer.com"
+    }
+  },
+  "basePath": "/ReflexDecantingHostService",
+  "paths": {
+    "/postToteArrivedAtWorkstation": {
+      "post": {
+        "summary": "postToteArrivedAtWorkstation",
+        "description": "post WAMAS postToteArrivedAtWorkstation",
+        "operationId": "postToteArrivedAtWorkstation",
+        "consumes": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "trackingId",
+            "in": "query",
+            "description": "trackingId of the request",
+            "required": true,
+             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK"          },
+          "400": {
+            "description": "Bad Request",
+             "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Error : Unknown error"
+          }
+        }
+      }
+    }
+      }
+}

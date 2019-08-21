@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostReflexEmptyTotesNeededRequest xmlns="http://www.hardis-group.com/schemas/WcsEmptyToteHandling.xsd">
+	<NumberOfTotes>100</NumberOfTotes>
+</PostReflexEmptyTotesNeededRequest>

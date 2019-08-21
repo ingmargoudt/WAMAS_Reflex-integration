@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostStockReportRequest xmlns="http://www.hardis-group.com/schemas/WcsStockManagement.xsd">
+	<RequestId>123443</RequestId>
+	<FilterLines>
+		<FilterLine>
+		<EanBarcode>1123244234111</EanBarcode>
+		</FilterLine>
+	</FilterLines>
+</PostStockReportRequest>
