@@ -34,7 +34,7 @@
 						<xs:documentation>Id of the request. Will be send back with response</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="Order" type="wcs:RemoveOrder" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:element name="Orders" type="wcs:RemoveOrders" nillable="false" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>List of orderlines to be removed</xs:documentation>
 					</xs:annotation>

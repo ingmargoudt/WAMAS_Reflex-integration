@@ -74,7 +74,7 @@
 		<xs:complexType>
 			<xs:choice>
 				<xs:element name="Errors" type="wcs:GetToteExceptionReasonError" nillable="false" minOccurs="0" maxOccurs="1" />
-				<xs:element name="Results" type="wcs:GetToteExceptionReasonResult" nillable="false" minOccurs="0" maxOccurs="1" />
+				<xs:element name="Result" type="wcs:GetToteExceptionReasonResult" nillable="false" minOccurs="0" maxOccurs="1" />
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
