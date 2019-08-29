@@ -4,7 +4,8 @@
 	<xs:element name="PutItemMasterData">
 		<xs:annotation>
 			<xs:documentation>Called by Reflex to add Item Master Data to WAMAS. Item with same EAN that already exist are overwritten. Reflex might call this message for every item change but won’t send more than 1000 at once. Reflex tries to send about 100 items at a time to reduce overhead, but this
-				interface is not restricted to this value.</xs:documentation>
+				interface is not restricted to this value.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:all>
@@ -27,11 +28,23 @@
 			<xs:element name="SellerId" type="wcs:SellerId" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="GlobalId" type="wcs:GlobalId" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="ItemDescription" type="wcs:ItemDescription" nillable="false" minOccurs="1" maxOccurs="1" />
-			<xs:element name="ItemDimensions" type="wcs:ItemDimensions" nillable="false" minOccurs="1" maxOccurs="1" />
-			<xs:element name="ItemWeight" type="wcs:ItemWeight" nillable="false" minOccurs="1" maxOccurs="1" />
-			<xs:element name="ItemVolume" type="wcs:ItemVolume" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="ItemDimensions" type="wcs:ItemDimensions" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>unit cm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ItemWeight" type="wcs:ItemWeight" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>unit kg</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ItemVolume" type="wcs:ItemVolume" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>unit dm³ (l)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="CleanUpFlag" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
-			<xs:element name="BbdRequired" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="BestBeforeDateRequired" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 
@@ -70,23 +83,23 @@
 	</xs:simpleType>
 
 	<xs:simpleType name="ItemDimension">
-		<xs:restriction base="xs:int">
-			<xs:minInclusive value="1"></xs:minInclusive>
-			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="7"></xs:totalDigits>
+			<xs:fractionDigits value="2"></xs:fractionDigits>
 		</xs:restriction>
 	</xs:simpleType>
 
 	<xs:simpleType name="ItemVolume">
-		<xs:restriction base="xs:int">
-			<xs:minInclusive value="1"></xs:minInclusive>
-			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="7"></xs:totalDigits>
+			<xs:fractionDigits value="2"></xs:fractionDigits>
 		</xs:restriction>
 	</xs:simpleType>
 
 	<xs:simpleType name="ItemWeight">
-		<xs:restriction base="xs:int">
-			<xs:minInclusive value="1"></xs:minInclusive>
-			<xs:maxInclusive value="999999999"></xs:maxInclusive>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="9"></xs:totalDigits>
+			<xs:fractionDigits value="3"></xs:fractionDigits>
 		</xs:restriction>
 	</xs:simpleType>
 

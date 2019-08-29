@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsStockManagement.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsStockManagement.xsd" elementFormDefault="qualified" version="1.0">
 
-	<xs:element  name="PostStockReportRequest">
-      <xs:annotation>
-      <xs:documentation>Reflex sends this to ask for current stock data, filter can be applied optional. Queries without EAN filter are usually only made outside of production time because they impact performance of
-   WAMAS. If one query is processed and another one is queued, we will send the second one to status error.</xs:documentation>
-    </xs:annotation>
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"         type="wcs:RequestId"               nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="FilterLines"       type="wcs:StockRequestFilterLines" nillable="false" minOccurs="0" maxOccurs="1"/>
-		</xs:all>
-	</xs:complexType>
+	<xs:element name="PostStockReportRequest">
+		<xs:annotation>
+			<xs:documentation>Reflex sends this to ask for current stock data, filter can be applied optional. Queries without EAN filter are usually only made outside of production time because they impact performance of
+				WAMAS. If one query is processed and another one is queued, we will send the second one
+				to status error.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="RequestId" type="wcs:RequestId" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="FilterLines" type="wcs:StockRequestFilterLines" nillable="false" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
 	</xs:element>
 
-	<xs:element  name="PostStockStatusChangeRequest">
-      <xs:annotation>
-      <xs:documentation>Reflex reports that stock is available / unavailable for sell. WAMAS will adjust the stock status to available / unavailable for all items that match the parsed filter.</xs:documentation>
-    </xs:annotation>
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"         type="wcs:RequestId"        nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="NewStockStatus"    type="wcs:StockStatus"      nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="FilterLines"       type="wcs:StockFilterLines" nillable="false" minOccurs="0" maxOccurs="1"/>
-		</xs:all>
-	</xs:complexType>
+	<xs:element name="PostStockStatusChangeRequest">
+		<xs:annotation>
+			<xs:documentation>Reflex reports that stock is available / unavailable for sell. WAMAS will adjust the stock status to available / unavailable for all items that match the parsed filter.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="RequestId" type="wcs:RequestId" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="NewStockStatus" type="wcs:StockStatus" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="FilterLines" type="wcs:StockFilterLines" nillable="false" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
 	</xs:element>
-	
-	<xs:complexType name = "StockFilterLines">
+
+	<xs:complexType name="StockFilterLines">
 		<xs:sequence>
-			<xs:element name="FilterLine" type="wcs:StockFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+			<xs:element name="FilterLine" type="wcs:StockFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name = "StockFilterLine">
+	<xs:complexType name="StockFilterLine">
 		<xs:all>
-			<xs:element name="EanBarcode"         type="wcs:EanBarcode"      nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="CurrentStockStatus" type="wcs:StockStatus"     nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="BestBeforeDate"     type="wcs:BestBeforeDate"  nillable="false" minOccurs="0" maxOccurs="1"/>					
-			<xs:element name="ReceiptNumber"      type="wcs:ReceiptNumber"   nillable="false" minOccurs="0" maxOccurs="1"/>							
+			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="CurrentStockStatus" type="wcs:StockStatus" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wcs:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ReceiptId" type="wcs:ReceiptId" nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
-	
-	<xs:complexType name = "StockRequestFilterLines">
+
+	<xs:complexType name="StockRequestFilterLines">
 		<xs:sequence>
-			<xs:element name="FilterLine" type="wcs:StockRequestFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+			<xs:element name="FilterLine" type="wcs:StockRequestFilterLine" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name = "StockRequestFilterLine">
+	<xs:complexType name="StockRequestFilterLine">
 		<xs:choice>
-			<xs:element name="EanBarcode"        type="wcs:EanBarcode"      nillable="false" />		
-			<xs:element name="BestBeforeDate"    type="wcs:BestBeforeDate"  nillable="false" />					
-			<xs:element name="StockStatus"       type="wcs:StockStatus"     nillable="false" />							
+			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" />
+			<xs:element name="BestBeforeDate" type="wcs:BestBeforeDate" nillable="false" />
+			<xs:element name="StockStatus" type="wcs:StockStatus" nillable="false" />
 		</xs:choice>
 	</xs:complexType>
-	
+
 	<xs:simpleType name="RequestId">
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="1"></xs:minInclusive>
@@ -70,19 +72,19 @@
 	</xs:simpleType>
 	<xs:simpleType name="EanBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="13"></xs:maxLength>
-		<xs:minLength value="13"></xs:minLength>		
-		</xs:restriction>		
+			<xs:maxLength value="13"></xs:maxLength>
+			<xs:minLength value="13"></xs:minLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="BestBeforeDate">
 		<xs:restriction base="xs:date">
-		</xs:restriction>		
+		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ReceiptNumber">
+	<xs:simpleType name="ReceiptId">
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="1"></xs:minInclusive>
 			<xs:maxInclusive value="999999999"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>
-	
+
 </xs:schema>

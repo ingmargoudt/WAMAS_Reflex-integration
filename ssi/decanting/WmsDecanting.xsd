@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wms="http://www.hardis-group.com/schemas/WmsDecanting.xsd" targetNamespace="http://www.hardis-group.com/schemas/WmsDecanting.xsd" elementFormDefault="qualified" version="1.0">
 
-	<xs:element name="PostToteArrivedAtWorkstationRequest">
+	<xs:element name="PostToteArrivedAtWorkstation">
 		<xs:annotation>
 			<xs:documentation>WAMAS will send a Message to Reflex if large tote arrives on workplace.</xs:documentation>
 		</xs:annotation>
@@ -33,7 +33,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="WorkstationSlot">
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="25"></xs:maxLength>
+			<xs:enumeration value="EXCEPTION_HANDLING_SOURCE_TOTE"></xs:enumeration>
+			<xs:enumeration value="EXCEPTION_HANDLING_EMPTY_TOTE"></xs:enumeration>
+			<xs:enumeration value="DECANTING_LARGE_TOTE"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ToteBarcode">

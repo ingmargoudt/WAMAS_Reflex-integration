@@ -1,142 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wms="http://www.hardis-group.com/schemas/WmsStockManagement.xsd" targetNamespace="http://www.hardis-group.com/schemas/WmsStockManagement.xsd" elementFormDefault="qualified" version="1.0">
 
-	<xs:element  name="UpdateStock">
-  <xs:annotation>
-      <xs:documentation>Stock has been updated. Picked items are NOT send via this message
-   - Tote reaches the final storage location and stock is available for order planning. The new Stock in all Compartments is sent to Reflex.
-   - Stock has been found at cycle counting.
-   - mismatch of stock qty is found during picking (unexpected empty or leftovers after pick to zero)
-   - damaged/dirty items are detracted from stock
-   </xs:documentation>
-    </xs:annotation>
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="ToteBarcode"       type="wms:ToteBarcode"  nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="ReasonCode"        type="wms:ReasonCode"   nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReasonText"        type="wms:ReasonText"   nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="UpdatedAtLocation" type="wms:Location"     nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:StockItems"   nillable="false" minOccurs="1" maxOccurs="1"/>				
-		</xs:all>
-	</xs:complexType>
+	<xs:element name="UpdateStock">
+		<xs:annotation>
+			<xs:documentation>Stock has been updated. Picked items are NOT send via this message
+				- Tote reaches the final storage location and stock is available for order planning. The new Stock in all Compartments is sent to Reflex.
+				- Stock has been found at cycle counting.
+				- mismatch of stock qty is found during picking (unexpected empty or leftovers after pick to zero)
+				- damaged/dirty items are detracted from stock
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ToteBarcode" type="wms:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="Reason" type="wms:UpdateStockReasonCode" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="UpdatedAtLocation" type="wms:Location" nillable="false" minOccurs="0" maxOccurs="1" />
+				<xs:element name="StockItems" type="wms:StockItems" nillable="false" minOccurs="1" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
 	</xs:element>
-	
-	<xs:element  name="PostStockReportResponse">
-    <xs:annotation>
-      <xs:documentation>WAMAS responds to StockReportRequest. Because of Data Size and performance WAMAS is free to send different EAN in different responses. Same EAN won't be splitted. Last Response will have RequestFinished set to true.</xs:documentation>
-    </xs:annotation>
 
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="ConcurrencyError"  type="xs:boolean"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="MessageNumber"     type="wms:MessageNumber" nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="RequestFinished"   type="xs:boolean"        nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1"/>				
-		</xs:all>
-	</xs:complexType>
+	<xs:element name="PostStockReportResponse">
+		<xs:annotation>
+			<xs:documentation>WAMAS responds to StockReportRequest. Because of Data Size and performance WAMAS is free to send different EAN in different responses. Same EAN won't be splitted. Last Response will have RequestFinished set to true.</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="RequestId" type="wms:RequestId" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="MessageNumber" type="wms:MessageNumber" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="RequestFinished" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="NotLockedStockItems" type="wms:StockItems" nillable="false" minOccurs="0" maxOccurs="1" />
+				<xs:element name="LockedStockItems" type="wms:StockItems" nillable="false" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
 	</xs:element>
-	
-	<xs:element  name="PostStockLockChange">
-      <xs:annotation>
-      <xs:documentation>WAMAS reports that stock is temporary locked or unlocked again.
-     WAMAS sends all stock separators needed by Reflex.</xs:documentation>
-    </xs:annotation>
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="ReasonText"        type="wms:ReasonText"    nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="LockStatus"        type="wms:LockStatus"    nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1"/>				
-		</xs:all>
-	</xs:complexType>
+
+	<xs:element name="PostStockLockChange">
+		<xs:annotation>
+			<xs:documentation>WAMAS reports that stock is temporary locked or unlocked again.
+				WAMAS sends all stock separators needed by Reflex.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ReasonText" type="wms:ReasonText" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="LockStatus" type="wms:LockStatus" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="StockItems" type="wms:StockItems" nillable="false" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
 	</xs:element>
-	
-	<xs:element  name="PostStockStatusChangeResponse">
-        <xs:annotation>
-      <xs:documentation>Reflex reports that stock is available / unavailable for sell. WAMAS will adjust the stock status to available / unavailable for all items that match the parsed filter.</xs:documentation>
-    </xs:annotation>
-	<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"         type="wms:RequestId"         nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="NewStockStatus"    type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:ChangedStockItems" nillable="false" minOccurs="0" maxOccurs="1"/>
-		</xs:all>
-	</xs:complexType>
+
+	<xs:element name="PostStockStatusChangeResponse">
+		<xs:annotation>
+			<xs:documentation>Reflex reports that stock is available / unavailable for sell. WAMAS will adjust the stock status to available / unavailable for all items that match the parsed filter.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="RequestId" type="wms:RequestId" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="NewStockStatus" type="wms:StockStatus" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="NotLockedStockItems" type="wms:ChangedStockItems" nillable="false" minOccurs="0" maxOccurs="1" />
+				<xs:element name="LockedStockItems" type="wms:ChangedStockItems" nillable="false" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
 	</xs:element>
-	
-	
-	<xs:complexType name = "StockItems">
+
+
+	<xs:complexType name="StockItems">
 		<xs:sequence>
-			<xs:element name="StockItem" type="wms:StockItem" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+			<xs:element name="StockItem" type="wms:StockItem" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name = "StockItem">
+	<xs:complexType name="StockItem">
 		<xs:all>
-			<xs:element name="EanBarcode"        type="wms:EanBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="BestBeforeDate"    type="wms:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
-			<xs:element name="Quantity"          type="wms:Quantity"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockStatus"       type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="EanBarcode" type="wms:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wms:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Quantity" type="wms:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="StockStatus" type="wms:StockStatus" nillable="false" minOccurs="1" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 
-	<xs:complexType name = "ChangedStockItems">
+	<xs:complexType name="ChangedStockItems">
 		<xs:sequence>
-			<xs:element name="StockItem"  type="wms:ChangedStockItem" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
+			<xs:element name="StockItem" type="wms:ChangedStockItem" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name = "ChangedStockItem">
+	<xs:complexType name="ChangedStockItem">
 		<xs:all>
-			<xs:element name="EanBarcode"        type="wms:EanBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="BestBeforeDate"    type="wms:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
-			<xs:element name="Quantity"          type="wms:Quantity"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockStatus"       type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ReceiptNumber"     type="wms:ReceiptNumber"     nillable="false" minOccurs="0" maxOccurs="1"/>							
+			<xs:element name="EanBarcode" type="wms:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wms:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Quantity" type="wms:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="StockStatus" type="wms:StockStatus" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="ReceiptId" type="wms:ReceiptId" nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 
 	<xs:simpleType name="ToteBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="18"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ReasonCode">
+	<xs:simpleType name="UpdateStockReasonCode">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="U01"></xs:enumeration>
-			<xs:enumeration value="U02"></xs:enumeration>
-			<xs:enumeration value="U03"></xs:enumeration>
-			<xs:enumeration value="U04"></xs:enumeration>
-			<xs:enumeration value="U05"></xs:enumeration>
-			<xs:enumeration value="U06"></xs:enumeration>
-			<xs:enumeration value="U07"></xs:enumeration>
-			<xs:enumeration value="U08"></xs:enumeration>
-			<xs:enumeration value="U09"></xs:enumeration>
-			<xs:enumeration value="U10"></xs:enumeration>
-			<xs:enumeration value="U11"></xs:enumeration>
-			<xs:enumeration value="U12"></xs:enumeration>
-			<xs:enumeration value="U13"></xs:enumeration>
-		</xs:restriction>		
+			<xs:enumeration value="U01_STOCKED_IN_SHUTTLE"></xs:enumeration>
+			<xs:enumeration value="U02_FOUND_AT_PICKING"></xs:enumeration>
+			<xs:enumeration value="U03_FOUND_AT_HOUSEKEEPING"></xs:enumeration>
+			<xs:enumeration value="U04_FOUND_AT_CYCLE_COUNTING"></xs:enumeration>
+			<xs:enumeration value="U05_MISSING_AT_PICKING"></xs:enumeration>
+			<xs:enumeration value="U06_MISSING_AT_HOUSEKEEPING"></xs:enumeration>
+			<xs:enumeration value="U07_MISSING_AT_CYCLE_COUNTING"></xs:enumeration>
+			<xs:enumeration value="U08_DAMAGED_AT_HOUSEKEEPING"></xs:enumeration>
+			<xs:enumeration value="U09_DAMAGED_AT_CYCLE_COUNTING"></xs:enumeration>
+			<xs:enumeration value="U10_SHUTTLE_TOTE_OVERHEIGHT_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U11_SHUTTLE_TOTE_REMOVED_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U12_SHUTTLE_TOTE_ISSUE_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U13_SHUTTLE_TOTE_DIRTY_ITEM_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U14_SHUTTLE_TOTE_DAMAGED_ITEM_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U15_BATCH_TOTE_ISSUE"></xs:enumeration>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ReasonText">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="255"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="255"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Location">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="12"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="255"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="EanBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="13"></xs:maxLength>
-		<xs:minLength value="13"></xs:minLength>		
-		</xs:restriction>		
+			<xs:maxLength value="13"></xs:maxLength>
+			<xs:minLength value="13"></xs:minLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="BestBeforeDate">
 		<xs:restriction base="xs:date">
-		</xs:restriction>		
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Quantity">
 		<xs:restriction base="xs:int">
@@ -168,11 +171,11 @@
 			<xs:enumeration value="Unlocked"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ReceiptNumber">
+	<xs:simpleType name="ReceiptId">
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="1"></xs:minInclusive>
 			<xs:maxInclusive value="999999999"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>
-		
+
 </xs:schema>
