@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostOrphanedToteLocked xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
+<ToteBarcodes>
+	<ToteBarcode>122333243434342</ToteBarcode>
+	<ToteBarcode>122333243434122</ToteBarcode>
+	<ToteBarcode>122333243434772</ToteBarcode>	
+</ToteBarcodes>
+</PostOrphanedToteLocked>

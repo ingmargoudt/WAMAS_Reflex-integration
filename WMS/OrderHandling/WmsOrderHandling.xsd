@@ -13,10 +13,11 @@
 	
 	<xs:element name="PostRemovedOrdersResponse">
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"           type="wms:RequestId"          nillable="false" minOccurs="1" maxOccurs="1"/>			
-			<xs:element name="Orders"              type="wms:RemovedOrders"      nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:all>
+			<xs:all>
+				<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1" />	
+				<xs:element name="RemovedOrders"     type="wms:RemovedOrders" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="UnremovableOrders" type="wms:RemovedOrders" nillable="false" minOccurs="1" maxOccurs="1" />
+				</xs:all>
 		</xs:complexType>
 	</xs:element>
 
@@ -24,12 +25,10 @@
 		<xs:complexType>
 		<xs:all>
 			<xs:element name="ToteBarcode"           type="wms:ToteBarcode"          nillable="false" minOccurs="1" maxOccurs="1"/>			
-			<xs:element name="WMSBatchId"            type="wms:BatchId"              nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="WCSBatchId"            type="wms:BatchId"              nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="IsLastToteOfBatch"     type="xs:boolean"               nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ReflexBatchId"         type="wms:BatchId"              nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="WamasBatchId"          type="wms:BatchId"              nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LastToteFlag"          type="xs:boolean"               nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Orders"                type="wms:PickedOrders"         nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="BestBeforeDate"        type="wms:BestBeforeDate"       nillable="false" minOccurs="0" maxOccurs="1"/>
-
 		</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -67,8 +66,7 @@
 	<xs:complexType name="RejectedOrder">
 		<xs:all>
 			<xs:element name="OrderId"                 type="wms:OrderId"            nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReasonCode"              type="wms:ReasonCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReasonText"              type="wms:ReasonText"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="RejectReason"            type="wms:Reason"             nillable="false" minOccurs="1" maxOccurs="1"/>
 
 		</xs:all>
 	</xs:complexType>
@@ -124,6 +122,7 @@
 			<xs:element name="PickId"                type="wms:PickId"             nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="EanBarcode"            type="wms:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="PickQuantity"          type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BestBeforeDate"        type="wms:BestBeforeDate"     nillable="false" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	
@@ -194,13 +193,7 @@
 			<xs:maxInclusive value="999999999"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>
-	
-	<xs:simpleType name="ReasonCode">
-		<xs:restriction base="xs:string">
-		<xs:maxLength value="3"></xs:maxLength>
-		</xs:restriction>		
-	</xs:simpleType>
-	<xs:simpleType name="ReasonText">
+	<xs:simpleType name="Reason">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="255"></xs:maxLength>
 		</xs:restriction>		

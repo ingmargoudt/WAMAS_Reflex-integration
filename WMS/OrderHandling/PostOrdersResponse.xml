@@ -8,13 +8,11 @@
 <RejectedOrders>
   <RejectedOrder>
     <OrderId>19000000007</OrderId>
-    <ReasonCode>X01</ReasonCode>
-    <ReasonText>Already processed</ReasonText>
+    <RejectReason>Already processed</RejectReason>
    </RejectedOrder> 
    <RejectedOrder>
     <OrderId>19000000011</OrderId>
-    <ReasonCode>X02</ReasonCode>
-    <ReasonText>Already processed</ReasonText>    
+    <RejectReason>Already processed</RejectReason>    
    </RejectedOrder> 
 </RejectedOrders>
 </PostOrdersResponse>

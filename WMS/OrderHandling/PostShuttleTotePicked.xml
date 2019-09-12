@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PostShuttleTotePicked xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
 	<ToteBarcode>100011122233300012</ToteBarcode>
-	<WMSBatchId>123456789</WMSBatchId>
+	<WmsBatchId>123456789</WmsBatchId>
 	<IsLastToteOfBatch>false</IsLastToteOfBatch>
 	<Orders>
 		<Order>		

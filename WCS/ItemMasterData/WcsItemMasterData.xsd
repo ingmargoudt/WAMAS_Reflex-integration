@@ -19,18 +19,17 @@
 
 	<xs:complexType name = "Item">
 		<xs:all>
-			<xs:element name="Eancode"           type="wcs:EanCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="SellerId"          type="wcs:SellerId"        nillable="false" minOccurs="1" maxOccurs="1"/>					
-			<xs:element name="GlobalId"          type="wcs:GlobalId"        nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ItemDescription"   type="wcs:ItemDescription" nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ItemDimensions"    type="wcs:ItemDimensions"  nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ItemWeight"        type="wcs:Weight"          nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ItemVolume"        type="wcs:Volume"          nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="CleanUpFlag"       type="xs:boolean"          nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="BBDRequired"       type="xs:boolean"          nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EanBarcode"              type="wcs:EanCode"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SellerId"                type="wcs:SellerId"        nillable="false" minOccurs="1" maxOccurs="1"/>					
+			<xs:element name="GlobalId"                type="wcs:GlobalId"        nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemDescription"         type="wcs:ItemDescription" nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemDimensions"          type="wcs:ItemDimensions"  nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemWeight"              type="wcs:ItemWeight"      nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="ItemVolume"              type="wcs:ItemVolume"      nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="CleanUpFlag"             type="xs:boolean"          nillable="false" minOccurs="1" maxOccurs="1"/>							
+			<xs:element name="BestBeforeDateRequired"  type="xs:boolean"          nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:all>
 	</xs:complexType>
-
 
 	<xs:complexType name = "ItemDimensions">
 		<xs:all>
@@ -73,17 +72,16 @@
 		</xs:restriction>		
 	</xs:simpleType>
 
-	<xs:simpleType name="Volume">
+	<xs:simpleType name="ItemVolume">
 		<xs:restriction base="xs:decimal">
 		<xs:totalDigits    value="7"></xs:totalDigits>
 		<xs:fractionDigits value="2"></xs:fractionDigits>
 		</xs:restriction>		
 	</xs:simpleType>
-
-	<xs:simpleType name="Weight">
+	<xs:simpleType name="ItemWeight">
 		<xs:restriction base="xs:decimal">
 		<xs:totalDigits    value="9"></xs:totalDigits>
-		<xs:fractionDigits value="2"></xs:fractionDigits>
+		<xs:fractionDigits value="3"></xs:fractionDigits>
 		</xs:restriction>		
 	</xs:simpleType>
 
