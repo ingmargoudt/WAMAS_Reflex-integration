@@ -184,7 +184,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="ToteBarcode" type="wcs:ToteBarcodes" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:element name="ToteBarcode" type="wcs:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>Barcode of emptied tote</xs:documentation>
 					</xs:annotation>
