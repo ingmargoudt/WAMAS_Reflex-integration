@@ -216,6 +216,7 @@
 			<xs:element name="PickId" type="wms:PickId" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="EanBarcode" type="wms:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="PickedQuantity" type="wms:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wms:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 
@@ -386,6 +387,10 @@
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="4000"></xs:maxLength>
 			<xs:minLength value="1"></xs:minLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BestBeforeDate">
+		<xs:restriction base="xs:date">
 		</xs:restriction>
 	</xs:simpleType>
 

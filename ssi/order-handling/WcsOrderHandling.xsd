@@ -213,7 +213,7 @@
 	<xs:complexType name="BatchDetails">
 		<xs:all>
 			<xs:element name="BatchId" type="wcs:BatchId" nillable="false" minOccurs="1" maxOccurs="1" />
-			<xs:element name="HandoverCutoffTime" type="xs:dateTime" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="HandoverCutoffTime" type="wcs:CutoffTime" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="PackingPriority" type="wcs:PackingPriority" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="PackingArea" type="wcs:PackingArea" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="AlternativePackingArea" type="wcs:PackingArea" nillable="false" minOccurs="1" maxOccurs="1" />
@@ -269,7 +269,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="AlternativePackingArea" type="wcs:PackingArea" nillable="true" minOccurs="0" maxOccurs="1" />
-			<xs:element name="HandoverCutoffTime" type="xs:dateTime" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="HandoverCutoffTime" type="wcs:CutoffTime" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="PackingPriority" type="wcs:PackingPriority" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="IsInternalOrder" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
@@ -294,7 +294,7 @@
 			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="Quantity" type="wcs:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="StockStatus" type="wcs:StockStatus" nillable="false" minOccurs="0" maxOccurs="1" />
-			<xs:element name="BestBeforeDate" type="xs:date" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wcs:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
 			<xs:element name="AllowEanSubstitution" type="xs:boolean" nillable="false" minOccurs="0" maxOccurs="1" />
 			<xs:element name="ReceiptId" type="wcs:ReceiptId" nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
@@ -408,6 +408,10 @@
 	<xs:simpleType name="ToteBarcode">
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BestBeforeDate">
+		<xs:restriction base="xs:date">
 		</xs:restriction>
 	</xs:simpleType>
 
