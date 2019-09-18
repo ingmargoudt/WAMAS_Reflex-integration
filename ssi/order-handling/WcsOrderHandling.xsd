@@ -290,7 +290,7 @@
 	<xs:complexType name="OrderLine">
 		<xs:all>
 			<xs:element name="OrderLineId" type="wcs:OrderLineId" nillable="false" minOccurs="1" maxOccurs="1" />
-			<xs:element name="PickId" type="wcs:PickId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="PickId" type="wcs:PickId" nillable="false" minOccurs="0" maxOccurs="1" />
 			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="Quantity" type="wcs:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
 			<xs:element name="StockStatus" type="wcs:StockStatus" nillable="false" minOccurs="0" maxOccurs="1" />
