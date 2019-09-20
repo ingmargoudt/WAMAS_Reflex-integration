@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostEmptyTotesToReflex xmlns="http://www.hardis-group.com/schemas/WmsEmptyToteHandling.xsd">
+  	<ToteBarcodes>
+  		<ToteBarcode>111222333444555123</ToteBarcode>
+		<ToteBarcode>111222333448885123</ToteBarcode>
+ 		<ToteBarcode>111222333449995123</ToteBarcode>
+	</ToteBarcodes>
+</PostEmptyTotesToReflex>
