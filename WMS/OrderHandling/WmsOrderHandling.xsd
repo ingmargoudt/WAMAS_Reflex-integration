@@ -58,6 +58,31 @@
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="PostOrderSorted">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="SortedTime"       type="xs:dateTime"          nillable="false" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="OrderId"          type="wms:OrderId"          nillable="false" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="SorterChute"      type="wms:Location"         nillable="false" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="SortedOrderLines" type="wms:SortedOrderLines" nillable="false" minOccurs="1" maxOccurs="1"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="SortedOrderLines">
+		<xs:sequence>
+			<xs:element name="SortedOrderLine" type="wms:SortedOrderLine" nillable="false" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SortedOrderLine">
+		<xs:all>
+			<xs:element name="OrderLineId"    type="wms:OrderLineId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="EanBarcode"     type="wms:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="SortedQuantity" type="wms:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>	
+	
 	<xs:complexType name="ConfirmedOrders">
 		<xs:sequence>
 			<xs:element name="OrderId"                 type="wms:OrderId"            nillable="false" minOccurs="1" maxOccurs="unbounded"/>
@@ -255,5 +280,10 @@
 		<xs:restriction base="xs:date">
 		</xs:restriction>		
 	</xs:simpleType>
-			
+	
+	<xs:simpleType name="Location">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>	
 </xs:schema>

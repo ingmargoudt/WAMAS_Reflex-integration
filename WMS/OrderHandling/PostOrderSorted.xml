@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostOrderSorted xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
+	<SortedTime>2018-01-02T19:00:12</SortedTime>
+    <OrderId>19000000001</OrderId>
+    <SorterChute>EMS.001</SorterChute>
+  	<SortedOrderLines>
+			<SortedOrderLine>
+				<OrderLineId>190000000000007</OrderLineId>
+				<EanBarcode>3434322312233</EanBarcode>
+				<SortedQuantity>1</SortedQuantity>
+			</SortedOrderLine>
+			<SortedOrderLine>
+		        <OrderLineId>190000000000008</OrderLineId>
+		        <EanBarcode>3434322312233</EanBarcode>
+				<SortedQuantity>1</SortedQuantity>
+		    </SortedOrderLine>    
+	</SortedOrderLines>
+</PostOrderSorted>
