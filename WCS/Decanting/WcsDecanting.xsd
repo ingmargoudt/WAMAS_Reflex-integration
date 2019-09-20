@@ -1,135 +1,156 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsDecanting.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsDecanting.xsd" elementFormDefault="qualified" version="1.0">	
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsDecanting.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsDecanting.xsd" elementFormDefault="qualified" version="1.0">
 	<xs:element name="PostToteAnnouncement">
+		<xs:annotation>
+			<xs:documentation>Operator wants a tote to be released (large tote or small tote at exception handling) or releases a tote manually (push off). Reflex sends this message to WAMAS to announce the tote, the destination and the stock (optional).</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-		<xs:sequence>
-			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="WorkstationId"   type="wcs:WorkstationId"   nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="WorkstationSlot" type="wcs:WorkstationSlot" nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="CompartmentType" type="wcs:CompartmentType" nillable="false" minOccurs="0" maxOccurs="1"/>	
-			<xs:element name="ToteDestination" type="wcs:ToteDestination" nillable="false" minOccurs="0" maxOccurs="1"/>	
-			<xs:element name="StockItems"      type="wcs:StockItems"      nillable="false" minOccurs="0" maxOccurs="1"/>				
-		</xs:sequence>
+			<xs:sequence>
+				<xs:element name="ToteBarcode" type="wcs:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Tote Barcode</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="WorkstationName" type="wcs:WorkstationName" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Workstation (optional, for totes that are not manually pushed off)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="WorkstationSlot" type="wcs:WorkstationSlot" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Workstation Slot (optional for totes that are not manually pushed off)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CompartmentType" type="wcs:CompartmentType" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Compartment Type (only small totes)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ToteDestination" type="wcs:ToteDestination" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Destination the tote should go to</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="StockItems" type="wcs:StockItems" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Stock Items (only if destination is Shuttle)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-		
-		
+
+
 	<xs:element name="PostToteAnnouncementResponse">
+		<xs:annotation>
+			<xs:documentation>Operator scanned small source tote or large tote and reflex wants to have information about tote. WAMAS cancels announcement(s) for the tote with this barcode on receiving this call.</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="ResponseId"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ResponseDescription" type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Errors"              type="wcs:Errors"              nillable="false" minOccurs="0" maxOccurs="1"/>	
-		</xs:all>
+			<xs:choice>
+				<xs:element name="Result" type="wcs:PostToteAnnouncementResult" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Filled if no error occured</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Error" type="wcs:PostToteAnnouncementError" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Filled if error occured</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
-	
+
 
 	<xs:element name="GetToteExceptionReason">
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>	
-		</xs:all>
+			<xs:all>
+				<xs:element name="ToteBarcode" type="wcs:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="GetToteExceptionReasonResponse">
 		<xs:complexType>
-		<xs:choice>
-			<xs:element name="ExceptionReasons"    type="wcs:ExceptionReasons"    nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Errors"              type="wcs:Errors"              nillable="false" minOccurs="0" maxOccurs="1"/>	
-		</xs:choice>
+			<xs:choice>
+				<xs:element name="Errors" type="wcs:GetToteExceptionReasonError" nillable="false" minOccurs="0" maxOccurs="1" />
+				<xs:element name="Result" type="wcs:GetToteExceptionReasonResult" nillable="false" minOccurs="0" maxOccurs="1" />
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 
-
-	<xs:complexType name = "Errors">
+	<xs:complexType name="StockItems">
 		<xs:sequence>
-			<xs:element name="Error"          type="wcs:Error"          nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StockItem" type="wcs:StockItem" nillable="false" minOccurs="0" maxOccurs="4" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name = "Error">
+	<xs:complexType name="StockItem">
 		<xs:all>
-			<xs:element name="ErrorId"          type="wcs:ErrorId"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ErrorDescription" type="wcs:ErrorDescription" nillable="false" minOccurs="1" maxOccurs="1"/>		
+			<xs:element name="CompartmentNumber" type="wcs:CompartmentNumber" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Quantity" type="wcs:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="ReceiptId" type="wcs:ReceiptId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wcs:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 
-	<xs:complexType name = "ExceptionReasons">
-		<xs:sequence>
-			<xs:element name="Overweight"          type="wcs:Overweight"          nillable="false" minOccurs="1" maxOccurs="unbounded"/>
-			<xs:element name="Overheight"          type="wcs:Overweight"          nillable="false" minOccurs="1" maxOccurs="unbounded"/>
-			<xs:element name="ExceptionReason"     type="wcs:ExceptionReason"     nillable="false" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name = "ExceptionReason">
+	<xs:simpleType name="PostToteAnnouncementError">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EC01_TOTE_NOT_AT_CONVEYABLE_WORKSTATION_SLOT"></xs:enumeration>
+			<xs:enumeration value="EC02_TOTE_UNKNOWN"></xs:enumeration>
+			<xs:enumeration value="EC03_UNKNWON_EAN"></xs:enumeration>
+			<xs:enumeration value="EC04_DUPLICATE_BARCODE"></xs:enumeration>
+			<xs:enumeration value="EC05_MORE_THAN_ONE_STOCK_ITEM_PER_COMPARTMENT"></xs:enumeration>
+			<xs:enumeration value="EC06_EMPTY_TOTE_SLOT_OCCUPIED_BUT_NO_ANNOUNCEMENT"></xs:enumeration>
+			<xs:enumeration value="EC07_WORKSTATION_UNKNOWN"></xs:enumeration>
+			<xs:enumeration value="EC08_NO_STOCK"></xs:enumeration>
+			<xs:enumeration value="EC09_INVALID_DESTINATION"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="GetToteExceptionReasonResult">
 		<xs:all>
-			<xs:element name="ReasonCode"          type="wcs:ResponseId"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReasonText"          type="wcs:ResponseDescription" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Overweight" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Overheight" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="ReasonCode" type="wcs:GetToteExceptionReasonCode" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
-
-
-	<xs:complexType name = "StockItems">
-		<xs:sequence>
-			<xs:element name="StockItem" type="wcs:StockItem" nillable="false" minOccurs="1" maxOccurs="unbounded"/>	
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name = "StockItem">
-		<xs:all>
-			<xs:element name="CompartmentNumber" type="wcs:CompartmentNumber" nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="EanBarcode"        type="wcs:EanBarcode"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Quantity"          type="wcs:Quantity"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReceiptId"         type="wcs:ReceiptId"         nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="BestBeforeDate"    type="wcs:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
-		</xs:all>
-	</xs:complexType>
-
-	<xs:simpleType name="ErrorId">
+	<xs:simpleType name="GetToteExceptionReasonCode">
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="10"></xs:maxLength>
-		</xs:restriction>		
+			<xs:enumeration value="RC01_ITEM_MASTER_DATA_UNKNOWN"></xs:enumeration>
+			<xs:enumeration value="RC02_NO_ANNOUNCEMENT"></xs:enumeration>
+			<xs:enumeration value="RC03_ANNOUNCEMENT_TO_EXCEPTION_HANDLING"></xs:enumeration>
+			<xs:enumeration value="RC04_ASSUMED_NO_READ"></xs:enumeration>
+		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ErrorDescription">
+	<xs:simpleType name="GetToteExceptionReasonError">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="255"></xs:maxLength>
-		</xs:restriction>		
+			<xs:enumeration value="EC01_TOTE_UNKNOWN"></xs:enumeration>
+		</xs:restriction>
 	</xs:simpleType>
-		<xs:simpleType name="ResponseId">
+	<xs:simpleType name="PostToteAnnouncementResult">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="X01"></xs:enumeration>
-			<xs:enumeration value="X02"></xs:enumeration>
-			<xs:enumeration value="X03"></xs:enumeration>
-			<xs:enumeration value="X04"></xs:enumeration>
-			<xs:enumeration value="X05"></xs:enumeration>
-			<xs:enumeration value="X06"></xs:enumeration>
-			<xs:enumeration value="X07"></xs:enumeration>
-			<xs:enumeration value="X08"></xs:enumeration>			
-		</xs:restriction>		
+			<xs:enumeration value="RC01_FREE_CAPACITY"></xs:enumeration>
+			<xs:enumeration value="RC02_NO_FREE_CAPACITY"></xs:enumeration>
+		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ResponseDescription">
+
+	<xs:simpleType name="WorkstationName">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="255"></xs:maxLength>
-		</xs:restriction>		
-	</xs:simpleType>	
-	<xs:simpleType name="WorkstationId">
-		<xs:restriction base="xs:string">
-		<xs:maxLength value="15"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="25"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ToteBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="18"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="WorkstationSlot">
-		<xs:restriction base="xs:int">
-		<xs:minInclusive value="1"></xs:minInclusive>
-		<xs:maxInclusive value="9"></xs:maxInclusive>
-		</xs:restriction>		
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EXCEPTION_HANDLING_SOURCE_TOTE"></xs:enumeration>
+			<xs:enumeration value="EXCEPTION_HANDLING_EMPTY_TOTE"></xs:enumeration>
+			<xs:enumeration value="DECANTING_LARGE_TOTE"></xs:enumeration>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="CompartmentType">
 		<xs:restriction base="xs:string">
@@ -139,22 +160,20 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="CompartmentNumber">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="1"></xs:enumeration>
-			<xs:enumeration value="2"></xs:enumeration>
-			<xs:enumeration value="3"></xs:enumeration>
-			<xs:enumeration value="4"></xs:enumeration>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="4"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="EanBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="13"></xs:maxLength>
-		<xs:minLength value="13"></xs:minLength>		
-		</xs:restriction>		
+			<xs:maxLength value="13"></xs:maxLength>
+			<xs:minLength value="13"></xs:minLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="BestBeforeDate">
 		<xs:restriction base="xs:date">
-		</xs:restriction>		
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ReceiptId">
 		<xs:restriction base="xs:long">
@@ -176,8 +195,5 @@
 			<xs:enumeration value="Shuttle"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="Overweight">
-		<xs:restriction base="xs:boolean">
-		</xs:restriction>		
-	</xs:simpleType>
+
 </xs:schema>

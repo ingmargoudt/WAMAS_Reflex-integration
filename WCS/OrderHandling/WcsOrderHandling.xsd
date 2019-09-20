@@ -1,144 +1,356 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd" elementFormDefault="qualified" version="1.0">	
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wcs="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd" targetNamespace="http://www.hardis-group.com/schemas/WcsOrderHandling.xsd" elementFormDefault="qualified" version="1.0">
 
 	<xs:element name="PostOrdersRequest">
+		<xs:annotation>
+			<xs:documentation>Reflex sends Orders that need to be picked in BFC2. If Orders haven’t been released yet, then Order Data gets overwritten by this call.
+				If they have already been released WAMAS will report that as erroneous order in PostOrdersResponse.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"           type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>			
-			<xs:element name="Orders"              type="wcs:Orders"         nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:all>
+			<xs:all>
+				<xs:element name="RequestId" type="wcs:RequestId" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Id of the request. Will be send back with response</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Orders" type="wcs:Orders" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>List of Orders</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="PostRemoveOrdersRequest">
+		<xs:annotation>
+			<xs:documentation>Reflex sends Order Lines that customers have cancelled</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"           type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>			
-			<xs:element name="Orders"              type="wcs:RemoveOrders"   nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:all>
+			<xs:all>
+				<xs:element name="RequestId" type="wcs:RequestId" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Id of the request. Will be send back with response</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Orders" type="wcs:RemoveOrders" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>List of orderlines to be removed</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="PostUnfulfillableOrdersRequest">
+		<xs:annotation>
+			<xs:documentation>Reflex can query for any orders that cannot be released due to unavailable / locked stock. WAMAS will respond with an UnfulfillableOrderResponse.
+				Only Orders with up to Max Cut-Off Date/Time are taken into account. This method will support up to a 24h ahead look. WAMAS does also
+				put a pessimistic lock on all returned unfulfillable Orders.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="RequestId"           type="wcs:RequestId"      nillable="false" minOccurs="1" maxOccurs="1"/>			
-			<xs:element name="MaximumCutoffTime"   type="wcs:CutoffTime"     nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:all>
+			<xs:all>
+				<xs:element name="RequestId" type="wcs:RequestId" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Id of the request. Will be send back with response</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MaximumCutoffTime" type="wcs:CutoffTime" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Max Cut-Off Date/Time of Orders taken into account</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="DeleteUnfulfillableOrders">
+		<xs:annotation>
+			<xs:documentation>Unfulfillable Orders, that were returned and locked before by WAMAS, should now be removed from or unlocked in WAMAS.</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-		<xs:all>
-			<xs:element name="DeletedOrLocked"     type="wcs:Action"                 nillable="false" minOccurs="1" maxOccurs="1"/>			
-			<xs:element name="Orders"              type="wcs:DeletedOrLockedOrders"  nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:all>
+			<xs:all>
+				<xs:element name="OrdersToBeDeleted" type="wcs:RemoveOrderIds" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>List of Orders to Delete</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="OrdersToBeUnlocked" type="wcs:RemoveOrderIds" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>List of Orders to Unlock</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PostReflexToteAnnouncement">
+		<xs:annotation>
+			<xs:documentation>A batch tote was picked in ADR / BFC1 / PalettePick by Reflex. If Last tote of Batch Flag set, then WAMAS can start picking for the shuttle items of this integration batch / packing if not an
+				integration batch. Can be resent later if totes failed health check. Batch Info will be
+				overwritten every time this message is sent. May be updated by subsequent calls until all announced totes
+				of a batch have successfully passed weight / Overheight control at BFC2.
+				For singles maybe Reflex even needs to send this as announcement before picking starts so that WAMAS can take it into
+				account for packing area WIP calculation. (Needs to be checked against travel times later in project).
+				If removal flag is set, then announcement for this tote gets removed (from Batch).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ToteBarcode" type="wcs:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Tote barcode</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="BatchDetails" type="wcs:BatchDetails" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Batch Info (optional if tote removal)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ReflexOrders" type="wcs:ReflexOrders" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>List of Orders in Tote</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="removeToteFromBatch" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Remove Tote from Batch Flag</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="estimatedTimeOfArrival" type="xs:dateTime" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Estimated time of arrival (optional if tote removal)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PostReflexBatchPicked">
+		<xs:annotation>
+			<xs:documentation>Reflex send this message when Batch is completely picked. May be updated by subsequent calls until all announced totes of a batch have successfully passed weight / Overheight control at BFC2.
+				Adding and removing totes in bfc2 will be done by WAMAS independently of this message.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ReflexBatchId" type="wcs:BatchId" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>reflexBatchId Id of the Batch the totes belong to</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ToteBarcodes" type="wcs:ToteBarcodes" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>List of the totes belonging to the batch</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 
+	<xs:element name="UpdatePackingArea">
+		<xs:annotation>
+			<xs:documentation>Reflex send this message to WAMAS when the packing area of a batch should be changed. This method is only used for failover.
+				If a batch had already been released from consolidation buffer, then WAMAS will not change the packing area.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ReflexBatchId" type="wcs:BatchId" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Reflex Batch ID (optional, in case of integration orders and internal orders)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="WamasBatchId" type="wcs:BatchId" nillable="false" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation> WAMAS Batch ID (optional, in case of shuttle only orders)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="NewPackingArea" type="wcs:PackingArea" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>New packing area</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PostBatchToteEmpty">
+		<xs:annotation>
+			<xs:documentation>Large Tote was emptied in Reflex-Managed BFC2-Packing area</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ToteBarcode" type="wcs:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Barcode of emptied tote</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="WorkstationName" type="wcs:WorkstationName" nillable="false" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation> Name of workstation where tote was emptied</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="WorkstationName">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="ToteBarcodes">
+		<xs:sequence>
+			<xs:element name="ToteBarcode" type="wcs:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BatchDetails">
+		<xs:all>
+			<xs:element name="BatchId" type="wcs:BatchId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="HandoverCutoffTime" type="wcs:CutoffTime" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="PackingPriority" type="wcs:PackingPriority" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="PackingArea" type="wcs:PackingArea" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="AlternativePackingArea" type="wcs:PackingArea" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="IsInternalOrder" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="ReflexOrders">
+		<xs:sequence>
+			<xs:element name="ReflexOrder" type="wcs:ReflexOrder" nillable="false" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ReflexOrder">
+		<xs:all>
+			<xs:element name="OrderId" type="wcs:OrderId" nillable="false" minOccurs="1" maxOccurs="1">
+			</xs:element>
+			<xs:element name="ReflexOrderLines" type="wcs:ReflexOrderLines" nillable="false" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="ReflexOrderLines">
+		<xs:sequence>
+			<xs:element name="ReflexOrderLine" type="wcs:ReflexOrderLine" nillable="false" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ReflexOrderLine">
+		<xs:all>
+			<xs:element name="OrderLineId" type="wcs:OrderLineId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Quantity" type="wcs:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
 	<xs:complexType name="Orders">
 		<xs:sequence>
-			<xs:element name="Order"             type="wcs:Order"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Order" type="wcs:Order" nillable="false" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Order">
+		<xs:all>
+			<xs:element name="OrderId" type="wcs:OrderId" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Contains the Reflex order ID + the year</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BatchId" type="wcs:BatchId" nillable="true" minOccurs="0" maxOccurs="1" />
+			<xs:element name="PackingArea" type="wcs:PackingArea" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indication of the area where the order will be packed. The warehouse destination is also included (BFC1 or BFC2).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AlternativePackingArea" type="wcs:PackingArea" nillable="true" minOccurs="0" maxOccurs="1" />
+			<xs:element name="HandoverCutoffTime" type="wcs:CutoffTime" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="PackingPriority" type="wcs:PackingPriority" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="IsInternalOrder" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates an 'NCO' order</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerOrderEntryTime" type="xs:dateTime" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="OrderLines" type="wcs:OrderLines" nillable="false" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="OrderLines">
+		<xs:sequence>
+			<xs:element name="OrderLine" type="wcs:OrderLine" nillable="false" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="OrderLine">
+		<xs:all>
+			<xs:element name="OrderLineId" type="wcs:OrderLineId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="PickId" type="wcs:PickId" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="EanBarcode" type="wcs:EanBarcode" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Quantity" type="wcs:Quantity" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="StockStatus" type="wcs:StockStatus" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="BestBeforeDate" type="wcs:BestBeforeDate" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="AllowEanSubstitution" type="xs:boolean" nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ReceiptId" type="wcs:ReceiptId" nillable="false" minOccurs="0" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="RemoveOrderIds">
+		<xs:sequence>
+			<xs:element name="OrderId" type="wcs:OrderId" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="RemoveOrders">
 		<xs:sequence>
-			<xs:element name="Order"             type="wcs:RemoveOrder"   nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Order" type="wcs:RemoveOrder" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="RemoveOrder">
 		<xs:all>
-			<xs:element name="OrderId"                 type="wcs:OrderId"            nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="OrderLines"              type="wcs:RemoveOrderLines"   nillable="false" minOccurs="1" maxOccurs="1"/>
-		</xs:all>	
-	</xs:complexType>
-	
-	<xs:complexType name="Order">
-		<xs:all>
-			<xs:element name="OrderId"                 type="wcs:OrderId"            nillable="false" minOccurs="1" maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>Contains the Reflex order ID + the year</xs:documentation>
-				</xs:annotation></xs:element>
-			<xs:element name="BatchId"                 type="wcs:BatchId"            nillable="false" minOccurs="0" maxOccurs="1"/>	
-			<xs:element name="PackingArea"             type="wcs:PackingArea"        nillable="false" minOccurs="1" maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>Indication of the area where the order will be packed. The warehouse designation is also included (BFC1 or BFC2).</xs:documentation>
-				</xs:annotation></xs:element>	
-			<xs:element name="AlternativePackingArea"  type="wcs:PackingArea"        nillable="false" minOccurs="0" maxOccurs="1"/>	
-			<xs:element name="HandoverCutoffTime"      type="xs:dateTime"            nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="PackingPriority"         type="wcs:PackingPriority"    nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="IsInternalOrder"         type="xs:boolean"             nillable="false" minOccurs="1" maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>Indicates an 'NCO' order</xs:documentation>
-				</xs:annotation></xs:element>
-			<xs:element name="CustomerOrderEntryTime"  type="xs:dateTime"            nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="OrderLines"              type="wcs:OrderLines"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OrderId" type="wcs:OrderId" nillable="false" minOccurs="1" maxOccurs="1" />
+			<xs:element name="OrderLines" type="wcs:RemoveOrderLines" nillable="false" minOccurs="1" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
-	
-	<xs:complexType name="OrderLines">
-		<xs:sequence>
-			<xs:element name="OrderLine"             type="wcs:OrderLine"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	
+
 	<xs:complexType name="RemoveOrderLines">
 		<xs:sequence>
-			<xs:element name="OrderLineId"           type="wcs:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="OrderLineId" type="wcs:OrderLineId" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
-	
-	<xs:complexType name="OrderLine">
-		<xs:all>
-			<xs:element name="OrderLineId"           type="wcs:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="PickId"                type="wcs:PickId"             nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="EanBarcode"            type="wcs:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Quantity"              type="wcs:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockStatus"           type="wcs:StockStatus"        nillable="false" minOccurs="0" maxOccurs="1"/>			
-			<xs:element name="BestBeforeDate"        type="xs:date"                nillable="false" minOccurs="0" maxOccurs="1"/>					
-			<xs:element name="AllowEANSubstitution"  type="xs:boolean"             nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="ReceiptId"             type="wcs:ReceiptId"          nillable="false" minOccurs="0" maxOccurs="1"/>
-		</xs:all>
-	</xs:complexType>
-	
-	
-	<xs:complexType name="DeletedOrLockedOrders">
-		<xs:sequence>
-			<xs:element name="OrderId" type="wcs:OrderId" nillable="false" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	
-	
-	<xs:simpleType name="CutoffTime"> 
+
+	<xs:simpleType name="CutoffTime">
 		<xs:restriction base="xs:dateTime">
-		</xs:restriction>		
-	</xs:simpleType>	
-	<xs:simpleType name="OrderId"> 
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrderId">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="11"></xs:maxLength>
-		<xs:minLength value="11"></xs:minLength>		
-		</xs:restriction>		
+			<xs:maxLength value="11"></xs:maxLength>
+			<xs:minLength value="11"></xs:minLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="OrderLineId">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="15"></xs:maxLength>
-		<xs:minLength value="15"></xs:minLength>		
-		</xs:restriction>		
-	</xs:simpleType>	
+			<xs:maxLength value="15"></xs:maxLength>
+			<xs:minLength value="15"></xs:minLength>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="PickId">
 		<xs:restriction base="xs:long">
 			<xs:minInclusive value="1"></xs:minInclusive>
 			<xs:maxInclusive value="9999999999999"></xs:maxInclusive>
-		</xs:restriction>		
-	</xs:simpleType>		
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="BatchId">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="20"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="RequestId">
 		<xs:restriction base="xs:int">
@@ -148,20 +360,26 @@
 	</xs:simpleType>
 	<xs:simpleType name="PackingArea">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="20"></xs:maxLength>
-		</xs:restriction>		
+			<xs:enumeration value="BFC1"></xs:enumeration>
+			<xs:enumeration value="BFC2_MONO_MANUAL_VAS"></xs:enumeration>
+			<xs:enumeration value="BFC2_MONO_MANUAL_REGULAR"></xs:enumeration>
+			<xs:enumeration value="BFC2_MONO_MECHANICAL_CARTONWRAP"></xs:enumeration>
+			<xs:enumeration value="BFC2_MULTI_MANUAL_VAS"></xs:enumeration>
+			<xs:enumeration value="BFC2_MULTI_MANUAL_REGULAR"></xs:enumeration>
+			<xs:enumeration value="BFC2_MULTI_MECHANICAL_SORTER"></xs:enumeration>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="PackingPriority">
 		<xs:restriction base="xs:int">
-			<xs:minInclusive value="1"></xs:minInclusive>
-			<xs:maxInclusive value="9"></xs:maxInclusive>
+			<xs:minInclusive value="3"></xs:minInclusive>
+			<xs:maxInclusive value="4"></xs:maxInclusive>
 		</xs:restriction>
-	</xs:simpleType>	
+	</xs:simpleType>
 	<xs:simpleType name="EanBarcode">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="13"></xs:maxLength>
-		<xs:minLength value="13"></xs:minLength>		
-		</xs:restriction>		
+			<xs:maxLength value="13"></xs:maxLength>
+			<xs:minLength value="13"></xs:minLength>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Quantity">
 		<xs:restriction base="xs:int">
@@ -180,12 +398,21 @@
 			<xs:minInclusive value="1"></xs:minInclusive>
 			<xs:maxInclusive value="99999999999"></xs:maxInclusive>
 		</xs:restriction>
-	</xs:simpleType>	
+	</xs:simpleType>
 	<xs:simpleType name="Action">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Deleted"></xs:enumeration>
 			<xs:enumeration value="Locked"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	
+	<xs:simpleType name="ToteBarcode">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BestBeforeDate">
+		<xs:restriction base="xs:date">
+		</xs:restriction>
+	</xs:simpleType>
+
 </xs:schema>
