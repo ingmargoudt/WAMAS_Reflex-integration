@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<PostToteAnnouncementRequest xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
-	<ToteBarcode>10728659482</ToteBarcode>
-	<WorkstationName>DEC001</WorkstationName>
-	<WorkstationSlot>DEC001WP01</WorkstationSlot>
-	<ToteDestination>ExceptionHandling</ToteDestination>
-</PostToteAnnouncementRequest>

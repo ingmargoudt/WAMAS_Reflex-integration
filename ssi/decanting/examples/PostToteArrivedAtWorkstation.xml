@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<PostToteArrivedAtWorkstation xmlns="http://www.hardis-group.com/schemas/WmsDecanting.xsd">
-	<ToteBarcode>10307193863</ToteBarcode>
-	<WorkstationName>DEC001</WorkstationName>
-	<WorkstationSlot>DEC001WP01</WorkstationSlot>
-</PostToteArrivedAtWorkstation>
