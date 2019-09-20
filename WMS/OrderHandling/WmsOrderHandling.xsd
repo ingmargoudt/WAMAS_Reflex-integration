@@ -16,7 +16,7 @@
 			<xs:all>
 				<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1" />	
 				<xs:element name="RemovedOrders"     type="wms:RemovedOrders" nillable="false" minOccurs="1" maxOccurs="1" />
-				<xs:element name="UnremovableOrders" type="wms:RemovedOrders" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="UnremovableOrders" type="wms:RemovedOrders" nillable="false" minOccurs="0" maxOccurs="1" />
 				</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -50,6 +50,13 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="PostOrphanedToteLocked">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ToteBarcodes" type="wms:ToteBarcodes" nillable="false" minOccurs="1" maxOccurs="1"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
 	
 	<xs:complexType name="ConfirmedOrders">
 		<xs:sequence>
@@ -176,6 +183,12 @@
 			<xs:element name="OrderLineId"           type="wms:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="RequestedQuantity"     type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="AvailableQuantity"     type="wms:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ToteBarcodes">
+		<xs:sequence>
+			<xs:element name="ToteBarcode" type="wms:ToteBarcode" nillable="false" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 

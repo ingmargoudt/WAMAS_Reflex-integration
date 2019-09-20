@@ -11,7 +11,7 @@
 	<xs:element  name="PostToteArrivedAtWorkstation">
 	<xs:complexType>
 		<xs:all>
-			<xs:element name="WorkstationId"   type="wms:WorkstationId"   nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="WorkstationName" type="wms:WorkstationName" nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="WorkstationSlot" type="wms:WorkstationSlot" nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="ToteBarcode"     type="wms:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>		
 		</xs:all>
@@ -29,9 +29,9 @@
 		</xs:restriction>		
 	</xs:simpleType>
 
-	<xs:simpleType name="WorkstationId">
+	<xs:simpleType name="WorkstationName">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="15"></xs:maxLength>
+		<xs:maxLength value="50"></xs:maxLength>
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="WorkstationSlot">

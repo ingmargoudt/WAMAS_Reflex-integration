@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PostToteAnnouncement xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
   <ToteBarcode>77812443</ToteBarcode>        
-  <WorkstationId>R200</WorkstationId>
-  <ToteOrientation>1</ToteOrientation>
+  <WorkstationName>R200</WorkstationName>
   <CompartmentType>STH</CompartmentType>
   <ToteDestination>Shuttle</ToteDestination>	
   <StockItems>
@@ -15,7 +14,7 @@
     </StockItem>
     <StockItem>
 	    <CompartmentNumber>2</CompartmentNumber> 
-	    <EanBarcode>001233232444322</EanBarcode>         
+	    <EanBarcode>332300992444322</EanBarcode>         
 	    <ReceiptId>19000123341</ReceiptId>      
 	    <Quantity>2</Quantity>
     </StockItem>

@@ -95,7 +95,7 @@
 	<xs:complexType name="OrderLine">
 		<xs:all>
 			<xs:element name="OrderLineId"           type="wcs:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="PickId"                type="wcs:PickId"             nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PickId"                type="wcs:PickId"             nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="EanBarcode"            type="wcs:EanBarcode"         nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Quantity"              type="wcs:Quantity"           nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="StockStatus"           type="wcs:StockStatus"        nillable="false" minOccurs="0" maxOccurs="1"/>			
@@ -112,7 +112,25 @@
 		</xs:sequence>
 	</xs:complexType>
 	
+	<xs:element name="PostBatchtoteEmpty">
+		<xs:complexType>
+		<xs:sequence>
+			<xs:element name="ToteBarcode"     type="wcs:ToteBarcode"     nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="WorkstationName" type="wcs:WorkstationName" nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 	
+	<xs:simpleType name="WorkstationName">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="50"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>
+	<xs:simpleType name="ToteBarcode">
+		<xs:restriction base="xs:string">
+		<xs:maxLength value="18"></xs:maxLength>
+		</xs:restriction>		
+	</xs:simpleType>	
 	<xs:simpleType name="CutoffTime"> 
 		<xs:restriction base="xs:dateTime">
 		</xs:restriction>		

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GetToteExceptionReasonResponse xmlns="http://www.hardis-group.com/schemas/WcsDecanting.xsd">
 <ExceptionReasons>
-	<ExceptionReason>
-		<ReasonCode>X05</ReasonCode>
-		<ReasonText>Compartment Configuration Unknown</ReasonText>
-	</ExceptionReason>
+	<Overweight>1</Overweight>
+	<Overheight>1</Overheight>
+	<ExceptionReason>X05_Compartment_Configuration_Unknown</ExceptionReason>
 </ExceptionReasons>
 
 </GetToteExceptionReasonResponse>
