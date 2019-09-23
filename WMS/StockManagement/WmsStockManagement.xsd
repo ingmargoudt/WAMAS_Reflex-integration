@@ -84,19 +84,21 @@
 	</xs:simpleType>
 	<xs:simpleType name="ReasonCode">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="U01"></xs:enumeration>
-			<xs:enumeration value="U02"></xs:enumeration>
-			<xs:enumeration value="U03"></xs:enumeration>
-			<xs:enumeration value="U04"></xs:enumeration>
-			<xs:enumeration value="U05"></xs:enumeration>
-			<xs:enumeration value="U06"></xs:enumeration>
-			<xs:enumeration value="U07"></xs:enumeration>
-			<xs:enumeration value="U08"></xs:enumeration>
-			<xs:enumeration value="U09"></xs:enumeration>
-			<xs:enumeration value="U10"></xs:enumeration>
-			<xs:enumeration value="U11"></xs:enumeration>
-			<xs:enumeration value="U12"></xs:enumeration>
-			<xs:enumeration value="U13"></xs:enumeration>
+			<xs:enumeration value="U01_STOCKED_IN_SHUTTLE"></xs:enumeration>
+			<xs:enumeration value="U02_FOUND_AT_PICKING"></xs:enumeration>
+			<xs:enumeration value="U03_FOUND_AT_HOUSEKEEPING"></xs:enumeration>
+			<xs:enumeration value="U04_FOUND_AT_CYCLE_COUNTING"></xs:enumeration>
+			<xs:enumeration value="U05_MISSING_AT_PICKING"></xs:enumeration>
+			<xs:enumeration value="U06_MISSING_AT_HOUSEKEEPING"></xs:enumeration>
+			<xs:enumeration value="U07_MISSING_AT_CYCLE_COUNTING"></xs:enumeration>
+			<xs:enumeration value="U08_DAMAGED_AT_HOUSEKEEPING"></xs:enumeration>
+			<xs:enumeration value="U09_DAMAGED_AT_CYCLE_COUNTING"></xs:enumeration>
+			<xs:enumeration value="U10_SHUTTLE_TOTE_OVERHEIGHT_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U11_SHUTTLE_TOTE_REMOVED_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U12_SHUTTLE_TOTE_ISSUE_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U13_SHUTTLE_TOTE_DIRTY_ITEM_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U14_SHUTTLE_TOTE_DAMAGED_ITEM_AT_REJECT"></xs:enumeration>
+			<xs:enumeration value="U15_BATCH_TOTE_ISSUE"></xs:enumeration>
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="ReasonText">

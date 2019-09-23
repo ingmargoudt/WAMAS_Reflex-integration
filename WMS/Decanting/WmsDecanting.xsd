@@ -35,9 +35,10 @@
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="WorkstationSlot">
-		<xs:restriction base="xs:int">
-		<xs:minInclusive value="1"></xs:minInclusive>
-		<xs:maxInclusive value="9"></xs:maxInclusive>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EXCEPTION_HANDLING_SOURCE_TOTE"></xs:enumeration>
+			<xs:enumeration value="EXCEPTION_HANDLING_EMPTY_TOTE"></xs:enumeration>
+			<xs:enumeration value="DECANTING_LARGE_TOTE"></xs:enumeration>
 		</xs:restriction>		
 	</xs:simpleType>
 	<xs:simpleType name="ToteBarcode">
