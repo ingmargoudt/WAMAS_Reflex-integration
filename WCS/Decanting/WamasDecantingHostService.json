@@ -1,0 +1,115 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the interface definition for the WamasDecantingHostService Interface",
+    "title": "WamasDecantingHostService",
+    "version": "1.0.0",
+    "contact": {
+      "email": "christoph.dunker@ssi-schaefer.com"
+    }
+  },
+  "basePath": "/WamasDecantingHostService",
+  "paths": {
+    "/postToteAnnouncement": {
+      "post": {
+        "summary": "postToteAnnouncement",
+        "description": "post WAMAS postToteAnnouncement",
+        "operationId": "postToteAnnouncement",
+        "consumes": [
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "trackingId",
+            "in": "query",
+            "description": "trackingId of the request",
+            "required": true,
+             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+             "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Error : Unknown error"
+          }
+        }
+      }
+    }
+    ,
+    "/getToteExceptionReason": {
+      "post": {
+        "summary": "getToteExceptionReason",
+        "description": "post WAMAS getToteExceptionReason",
+        "operationId": "getToteExceptionReason",
+        "consumes": [
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "trackingId",
+            "in": "query",
+            "description": "trackingId of the request",
+            "required": true,
+             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+             "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Error : Unknown error"
+          }
+        }
+      }
+    }
+      }
+}

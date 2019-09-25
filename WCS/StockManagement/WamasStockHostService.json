@@ -1,0 +1,101 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the interface definition for the WamasStockHostService Interface",
+    "title": "WamasStockHostService",
+    "version": "1.0.0",
+    "contact": {
+      "email": "christoph.dunker@ssi-schaefer.com"
+    }
+  },
+  "basePath": "/WamasStockHostService",
+  "paths": {
+    "/postStockReportRequest": {
+      "post": {
+        "summary": "postStockReportRequest",
+        "description": "post WAMAS postStockReportRequest",
+        "operationId": "postStockReportRequest",
+        "consumes": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "trackingId",
+            "in": "query",
+            "description": "trackingId of the request",
+            "required": true,
+             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK"          },
+          "400": {
+            "description": "Bad Request",
+             "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Error : Unknown error"
+          }
+        }
+      }
+    }
+    ,
+    "/postStockStatusChangeRequest": {
+      "post": {
+        "summary": "postStockStatusChangeRequest",
+        "description": "post WAMAS postStockStatusChangeRequest",
+        "operationId": "postStockStatusChangeRequest",
+        "consumes": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "trackingId",
+            "in": "query",
+            "description": "trackingId of the request",
+            "required": true,
+             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK"          },
+          "400": {
+            "description": "Bad Request",
+             "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Error : Unknown error"
+          }
+        }
+      }
+    }
+      }
+}
