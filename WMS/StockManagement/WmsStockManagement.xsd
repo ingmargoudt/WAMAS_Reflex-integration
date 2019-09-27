@@ -16,11 +16,12 @@
 	<xs:element  name="PostStockReportResponse">
 	<xs:complexType>
 		<xs:all>
-			<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="ConcurrencyError"  type="xs:boolean"        nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="MessageNumber"     type="wms:MessageNumber" nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="RequestFinished"   type="xs:boolean"        nillable="false" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1"/>				
+			<xs:element name="RequestId"           type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="ConcurrencyError"    type="xs:boolean"        nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MessageNumber"       type="wms:MessageNumber" nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="RequestFinished"     type="xs:boolean"        nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NotLockedStockItems" type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="LockedStockItems"    type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
@@ -73,7 +74,7 @@
 			<xs:element name="BestBeforeDate"    type="wms:BestBeforeDate"    nillable="false" minOccurs="0" maxOccurs="1"/>					
 			<xs:element name="Quantity"          type="wms:Quantity"          nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="StockStatus"       type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>							
-			<xs:element name="ReceiptNumber"     type="wms:ReceiptNumber"     nillable="false" minOccurs="0" maxOccurs="1"/>							
+			<xs:element name="ReceiptId"         type="wms:ReceiptId"         nillable="false" minOccurs="0" maxOccurs="1"/>							
 		</xs:all>
 	</xs:complexType>
 
@@ -151,7 +152,7 @@
 			<xs:enumeration value="Unlocked"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ReceiptNumber">
+	<xs:simpleType name="ReceiptId">
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="1"></xs:minInclusive>
 			<xs:maxInclusive value="999999999"></xs:maxInclusive>
