@@ -4,7 +4,7 @@
 	<ConcurrencyError>false</ConcurrencyError>
 	<MessageNumber>123450000</MessageNumber>
 	<RequestFinished>false</RequestFinished>
-	<StockItems>
+	<LockedStockItems>
 		<StockItem>
 			<EanBarcode>1230000000321</EanBarcode>
 			<BestBeforeDate>2021-04-04</BestBeforeDate>
@@ -17,5 +17,19 @@
 			<Quantity>2</Quantity>
 			<StockStatus>Unavailable</StockStatus>
 		</StockItem>
-	</StockItems>
+	</LockedStockItems>
+	<NotLockedStockItems>
+		<StockItem>
+			<EanBarcode>1230000000326</EanBarcode>
+			<BestBeforeDate>2021-04-04</BestBeforeDate>
+			<Quantity>1</Quantity>
+			<StockStatus>Available</StockStatus>
+		</StockItem>
+		<StockItem>
+			<EanBarcode>1230012006555</EanBarcode>
+			<BestBeforeDate>2023-01-05</BestBeforeDate>
+			<Quantity>2</Quantity>
+			<StockStatus>Available</StockStatus>
+		</StockItem>
+	</NotLockedStockItems>	
 </PostStockReportResponse>
