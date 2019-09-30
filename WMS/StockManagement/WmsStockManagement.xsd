@@ -38,10 +38,10 @@
 	<xs:element  name="PostStockStatusChangeResponse">
 	<xs:complexType>
 		<xs:all>
-			<xs:element name="RequestId"           type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="NewStockStatus"      type="wms:StockStatus"   nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="NotLockedStockItems" type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1" />
-			<xs:element name="LockedStockItems"    type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="RequestId"           type="wms:RequestId"           nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="NewStockStatus"      type="wms:StockStatus"         nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NotLockedStockItems" type="wms:StockItems"          nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="LockedStockItems"    type="wms:ChangedStockItems"   nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
