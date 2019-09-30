@@ -361,5 +361,49 @@
         }
       }
     }
+    ,
+    "/postBatchToteDeviation": {
+      "post": {
+        "summary": "postBatchToteDeviation",
+        "description": "post WAMAS postBatchToteDeviation",
+        "operationId": "postBatchToteDeviation",
+        "consumes": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "trackingId",
+            "in": "query",
+            "description": "trackingId of the request",
+            "required": true,
+             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK"          },
+          "400": {
+            "description": "Bad Request",
+             "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Error : Unknown error"
+          }
+        }
+      }
+    }
       }
 }
