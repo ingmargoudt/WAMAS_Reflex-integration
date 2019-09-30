@@ -11,7 +11,7 @@
 		</xs:complexType>
 	</xs:element>
 	
-	<xs:element name="PostRemovedOrdersResponse">
+	<xs:element name="PostRemoveOrdersResponse">
 		<xs:complexType>
 			<xs:all>
 				<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1" />	
