@@ -158,5 +158,4 @@
 			<xs:maxInclusive value="999999999"></xs:maxInclusive>
 		</xs:restriction>
 	</xs:simpleType>
-		
 </xs:schema>
