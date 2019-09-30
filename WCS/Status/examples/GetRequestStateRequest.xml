@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<GetRequestStateRequest xmlns="http://www.hardis-group.com/schemas/WcsStatus.xsd">
-	<TrackingId>123443</TrackingId>
-</GetRequestStateRequest>
