@@ -5,8 +5,7 @@
 	<xs:complexType>
 		<xs:all>
 			<xs:element name="ToteBarcode"       type="wms:ToteBarcode"  nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="ReasonCode"        type="wms:ReasonCode"   nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ReasonText"        type="wms:ReasonText"   nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="Reason"            type="wms:Reason"       nillable="false" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="UpdatedAtLocation" type="wms:Location"     nillable="false" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="StockItems"        type="wms:StockItems"   nillable="false" minOccurs="1" maxOccurs="1"/>				
 		</xs:all>
@@ -39,9 +38,10 @@
 	<xs:element  name="PostStockStatusChangeResponse">
 	<xs:complexType>
 		<xs:all>
-			<xs:element name="RequestId"         type="wms:RequestId"         nillable="false" minOccurs="1" maxOccurs="1"/>	
-			<xs:element name="NewStockStatus"    type="wms:StockStatus"       nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="StockItems"        type="wms:ChangedStockItems" nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RequestId"           type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1"/>	
+			<xs:element name="NewStockStatus"      type="wms:StockStatus"   nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NotLockedStockItems" type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1" />
+			<xs:element name="LockedStockItems"    type="wms:StockItems"    nillable="false" minOccurs="0" maxOccurs="1" />
 		</xs:all>
 	</xs:complexType>
 	</xs:element>
@@ -83,7 +83,8 @@
 		<xs:maxLength value="18"></xs:maxLength>
 		</xs:restriction>		
 	</xs:simpleType>
-	<xs:simpleType name="ReasonCode">
+	
+	<xs:simpleType name="Reason">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="U01_STOCKED_IN_SHUTTLE"></xs:enumeration>
 			<xs:enumeration value="U02_FOUND_AT_PICKING"></xs:enumeration>
@@ -102,11 +103,14 @@
 			<xs:enumeration value="U15_BATCH_TOTE_ISSUE"></xs:enumeration>
 		</xs:restriction>		
 	</xs:simpleType>
+	
 	<xs:simpleType name="ReasonText">
 		<xs:restriction base="xs:string">
-		<xs:maxLength value="255"></xs:maxLength>
-		</xs:restriction>		
+			<xs:maxLength value="255"></xs:maxLength>
+		</xs:restriction>
 	</xs:simpleType>
+	
+	
 	<xs:simpleType name="Location">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="12"></xs:maxLength>
