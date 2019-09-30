@@ -14,6 +14,7 @@
 			<BestBeforeDate>2023-01-05</BestBeforeDate>
 			<Quantity>2</Quantity>
 			<StockStatus>Unavailable</StockStatus>
+			<ReceiptId>19000123323</ReceiptId>
 		</StockItem>
 	</LockedStockItems>
 	<NotLockedStockItems>
@@ -22,6 +23,7 @@
 			<BestBeforeDate>2021-04-04</BestBeforeDate>
 			<Quantity>1</Quantity>
 			<StockStatus>Available</StockStatus>
+			<ReceiptId>19000123323</ReceiptId>
 		</StockItem>
 		<StockItem>
 			<EanBarcode>1230012006555</EanBarcode>
