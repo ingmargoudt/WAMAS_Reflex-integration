@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PostRemovedOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
+<PostRemoveOrdersResponse xmlns="http://www.hardis-group.com/schemas/WmsOrderHandling.xsd">
 	<RequestId>123456789</RequestId>
 	<RemovedOrders>
 		<Order>		
@@ -33,15 +33,9 @@
 		<Order>		
         <OrderId>19000002001</OrderId>
 		<OrderLines>
-			<OrderLine>
 				<OrderLineId>190000000000066</OrderLineId>
-				<OrderLineIsRemoved>true</OrderLineIsRemoved>
-			</OrderLine>
-			<OrderLine>
 		        <OrderLineId>190000000000011</OrderLineId>
-		        <OrderLineIsRemoved>true</OrderLineIsRemoved>
-		    </OrderLine>    
-		</OrderLines>
+		</OrderLines>    
 		</Order>
 	</UnremovableOrders>	
-</PostRemovedOrdersResponse>
+</PostRemoveOrdersResponse>

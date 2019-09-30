@@ -14,9 +14,9 @@
 	<xs:element name="PostRemoveOrdersResponse">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="RequestId"         type="wms:RequestId"     nillable="false" minOccurs="1" maxOccurs="1" />	
-				<xs:element name="RemovedOrders"     type="wms:RemovedOrders" nillable="false" minOccurs="1" maxOccurs="1" />
-				<xs:element name="UnremovableOrders" type="wms:RemovedOrders" nillable="false" minOccurs="0" maxOccurs="1" />
+				<xs:element name="RequestId"         type="wms:RequestId"         nillable="false" minOccurs="1" maxOccurs="1" />	
+				<xs:element name="RemovedOrders"     type="wms:RemovedOrders"     nillable="false" minOccurs="1" maxOccurs="1" />
+				<xs:element name="UnremovableOrders" type="wms:UnremovableOrders" nillable="false" minOccurs="0" maxOccurs="1" />
 				</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -103,6 +103,25 @@
 		</xs:all>
 	</xs:complexType>
 
+	<xs:complexType name="UnremovableOrders">
+		<xs:sequence>
+			<xs:element name="Order"                 type="wms:UnremovableOrder"       nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UnremovableOrder">
+		<xs:all>
+			<xs:element name="OrderId"                 type="wms:OrderId"                nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OrderLines"              type="wms:UnremovableOrderLines"  nillable="false" minOccurs="1" maxOccurs="1"/>
+		</xs:all>	
+	</xs:complexType>
+	
+	<xs:complexType name="UnremovableOrderLines">
+		<xs:sequence>
+			<xs:element name="OrderLineId"           type="wms:OrderLineId"        nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
 	<xs:complexType name="RemovedOrders">
 		<xs:sequence>
 			<xs:element name="Order"                 type="wms:RemovedOrder"            nillable="false" minOccurs="1" maxOccurs="unbounded"/>
@@ -128,6 +147,8 @@
 			<xs:element name="OrderLineIsRemoved"    type="xs:boolean"             nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
+
+
 
 	<xs:complexType name="PickedOrders">
 		<xs:sequence>
