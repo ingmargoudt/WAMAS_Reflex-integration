@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UpdateStock xmlns="http://www.hardis-group.com/schemas/WmsStockManagement.xsd">
 	<ToteBarcode>77812443</ToteBarcode>        
-	<ReasonCode >U01</ReasonCode> 
-	<ReasonText >Stocked in Shuttle</ReasonText> 
+	<Reason>U01_STOCKED_IN_SHUTTLE</Reason> 
 	<StockItems>
 		<StockItem>
 			<EanBarcode>0012332324431</EanBarcode>         
