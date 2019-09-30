@@ -2,12 +2,12 @@
 <PostStockStatusChangeResponse xmlns="http://www.hardis-group.com/schemas/WmsStockManagement.xsd">
 	<RequestId>23232322</RequestId>
 	<NewStockStatus>Available</NewStockStatus>
-	<StockItems>
+	<LockedStockItems>
 		<StockItem>
 			<EanBarcode>1230000000321</EanBarcode>
 			<BestBeforeDate>2021-04-04</BestBeforeDate>
 			<Quantity>1</Quantity>
-			<StockStatus>Unavailable</StockStatus>
+			<StockStatus>Available</StockStatus>
 		</StockItem>
 		<StockItem>
 			<EanBarcode>1230000001555</EanBarcode>
@@ -15,5 +15,18 @@
 			<Quantity>2</Quantity>
 			<StockStatus>Unavailable</StockStatus>
 		</StockItem>
-	</StockItems>
-</PostStockStatusChangeResponse>
+	</LockedStockItems>
+	<NotLockedStockItems>
+		<StockItem>
+			<EanBarcode>1230000000326</EanBarcode>
+			<BestBeforeDate>2021-04-04</BestBeforeDate>
+			<Quantity>1</Quantity>
+			<StockStatus>Available</StockStatus>
+		</StockItem>
+		<StockItem>
+			<EanBarcode>1230012006555</EanBarcode>
+			<BestBeforeDate>2023-01-05</BestBeforeDate>
+			<Quantity>2</Quantity>
+			<StockStatus>Available</StockStatus>
+		</StockItem>
+	</NotLockedStockItems></PostStockStatusChangeResponse>
