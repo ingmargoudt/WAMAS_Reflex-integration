@@ -130,7 +130,7 @@
 	
 	<xs:element name="PostBatchToteDeviation">
 		<xs:annotation>
-			<xs:documentation>Reflex sends this message when Batch Tote is going to be packed at a different station then it was originally planned to be packed. Mostly send because of noreads. 
+			<xs:documentation>Reflex sends this message when Batch Tote is going to be packed at a different station then it was delivered to. Mostly send because of noreads. 
 				Reflex can always send this message when it scans a tote prior to start packing. WAMAS will be able to handle that.
 			</xs:documentation>
 		</xs:annotation>
