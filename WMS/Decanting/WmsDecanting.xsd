@@ -3,8 +3,7 @@
 	
 	<xs:complexType name="Errors">
 		<xs:all>
-			<xs:element name="ErrorId"          type="wms:ErrorId"          nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ErrorDescription" type="wms:ErrorDescription" nillable="false" minOccurs="1" maxOccurs="1"/>		
+			<xs:element name="Error"            type="wms:Error"            nillable="false" minOccurs="1" maxOccurs="1"/>
 		</xs:all>
 	</xs:complexType>
 
@@ -18,12 +17,7 @@
 	</xs:complexType>
 	</xs:element>
 	
-	<xs:simpleType name="ErrorId">
-		<xs:restriction base="xs:string">
-		<xs:maxLength value="10"></xs:maxLength>
-		</xs:restriction>		
-	</xs:simpleType>
-	<xs:simpleType name="ErrorDescription">
+	<xs:simpleType name="Error">
 		<xs:restriction base="xs:string">
 		<xs:maxLength value="255"></xs:maxLength>
 		</xs:restriction>		
@@ -46,5 +40,4 @@
 		<xs:maxLength value="18"></xs:maxLength>
 		</xs:restriction>		
 	</xs:simpleType>
-	
 </xs:schema>
