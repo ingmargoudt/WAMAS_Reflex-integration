@@ -6,7 +6,7 @@
 		<xs:all>
 			<xs:element name="RequestId"           type="wms:RequestId"          nillable="false" minOccurs="1" maxOccurs="1"/>			
 			<xs:element name="ConfirmedOrders"     type="wms:ConfirmedOrders"    nillable="false" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="RejectedOrders"      type="wms:RejectedOrders"     nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="RejectedOrders"      type="wms:RejectedOrders"     nillable="false" minOccurs="0" maxOccurs="1"/>
 		</xs:all>
 		</xs:complexType>
 	</xs:element>
